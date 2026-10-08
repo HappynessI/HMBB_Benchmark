@@ -1,0 +1,13 @@
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+.env
+.env.*
+*.key
+*.pem
+private/
+api/
+logs/
+raw_data/
+benchmark_runs/

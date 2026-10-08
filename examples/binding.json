@@ -1,0 +1,13 @@
+{
+  "example_status": "synthetic_schema_example_not_business_rubric",
+  "business_points": [
+    {
+      "id": "kp1",
+      "original_weight": 2.5
+    },
+    {
+      "id": "kp2",
+      "original_weight": 2
+    }
+  ]
+}

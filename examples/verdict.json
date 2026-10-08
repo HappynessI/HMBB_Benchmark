@@ -1,0 +1,21 @@
+{
+  "example_status": "synthetic_not_model_judgment",
+  "needs_review": false,
+  "business_points": {
+    "kp1": "excellent",
+    "kp2": "excellent"
+  },
+  "criteria": {
+    "turn_decision": "excellent",
+    "customer_load": "excellent",
+    "natural_contextual_reply": "excellent",
+    "grounding": "excellent",
+    "internal_support": "excellent"
+  },
+  "controls": {
+    "no_answer": false,
+    "wrong_task": false,
+    "decisive_business_error": false,
+    "urgent_safety_failure": false
+  }
+}

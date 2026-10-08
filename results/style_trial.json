@@ -1,0 +1,68 @@
+[
+  {
+    "backend": "llm_wiki",
+    "question_id": "hb-real-001",
+    "dataset": "new_benchmark_single_question_preview",
+    "reference_status": "not_business_validated",
+    "customer_reply_before_chars": 714,
+    "customer_reply_after_chars": 103,
+    "character_count": "Unicode characters excluding whitespace",
+    "customer_reply_after": "换个地方用，相当于换了新的 Wi-Fi，设备要重新配网才能连上；在这之前先别解绑、别删除 App 里的设备，也别更换绑定账号。想确认现在卡在哪一步，麻烦您看一眼设备上的灯：是红灯一直常亮、完全不亮，还是蓝灯在闪？",
+    "wall_seconds": 37.26447870803531,
+    "input_tokens_including_cache": 61136,
+    "output_tokens": 5404,
+    "api_calls": 6,
+    "api_errors": 0,
+    "tool_error_markers": 0,
+    "actual_backend": "llm-wiki",
+    "degraded": false,
+    "initial_model_grading": {
+      "status": "scored",
+      "dimensions": {
+        "business_points": 15.0,
+        "turn_decision": 10.0,
+        "customer_load": 20.0,
+        "natural_contextual_reply": 15.0,
+        "grounding": 5.0,
+        "internal_support": 5.0
+      },
+      "raw_score": 70.0,
+      "caps": {},
+      "score": 70.0
+    },
+    "review_status": "needs_calibration_review"
+  },
+  {
+    "backend": "utopia",
+    "question_id": "hb-real-001",
+    "dataset": "new_benchmark_single_question_preview",
+    "reference_status": "not_business_validated",
+    "customer_reply_before_chars": 544,
+    "customer_reply_after_chars": 121,
+    "character_count": "Unicode characters excluding whitespace",
+    "customer_reply_after": "换到新地方后，如果那边用的是另一套 Wi-Fi，看护器自己是连不上的——这种情况一般不是设备坏了，需要重新联网一次。您这边新位置连的网络，是和原来那台同一个，还是换成了新的（不同路由器，或改过名称、密码）？告诉我是哪种，我再给您对应的操作办法。",
+    "wall_seconds": 73.72488141595386,
+    "input_tokens_including_cache": 117657,
+    "output_tokens": 12826,
+    "api_calls": 5,
+    "api_errors": 0,
+    "tool_error_markers": 0,
+    "actual_backend": "utopia",
+    "degraded": false,
+    "initial_model_grading": {
+      "status": "scored",
+      "dimensions": {
+        "business_points": 24.642857142857142,
+        "turn_decision": 20.0,
+        "customer_load": 20.0,
+        "natural_contextual_reply": 15.0,
+        "grounding": 10.0,
+        "internal_support": 5.0
+      },
+      "raw_score": 94.64285714285714,
+      "caps": {},
+      "score": 94.64
+    },
+    "review_status": "needs_calibration_review"
+  }
+]

@@ -1,1 +1,44 @@
-# HMBB_Benchmark
+# 海马爸比客服 Agent 评测
+
+比较不同 Agent 框架与知识接入方式，并让客服回复更简短、自然、准确。
+
+本仓库整理本轮的**评测规则、答题 prompt、单题结果和计分代码**。正式实验使用前任 benchmark 的 test 50 题；后续聚焦 Hermes＋原 Skill，对比原文件知识库、LLM-Wiki 与 Utopia。
+
+> 当前处于评分校准阶段，没有经过校准的完整质量排名。单题高分不代表方案整体更好。
+
+## 先看这三份
+
+| 文档 | 解决什么问题 |
+|---|---|
+| [实验口径](docs/实验口径.md) | 用什么题、模型和配置；哪些数据不能混算 |
+| [本次改动](docs/本次改动.md) | Rubric 2.0 和回复风格 prompt 改了什么 |
+| [单题结果](results/单题结果.md) | 完整客户回复、长度变化、初评分数与待解决问题 |
+
+## 本轮最重要的发现
+
+- 加入“一轮只聚焦一个关键问题或排查阶段”的要求后，同题客户回复从 **714 / 544** 个字符缩短到 **103 / 121** 个字符（LLM-Wiki / Utopia，不计空白）。
+- 变短不等于变正确：LLM-Wiki 把“换地点”直接当作“换 Wi-Fi”；Utopia 保留条件并先确认网络是否变化。
+- 新回复初评为 **70 / 94.64 分**，但评分边界仍有争议，均标记待复核。
+- 运行完成不等于有效作答：旧 LLM-Wiki test50 批次有 3 条输出工具标记而非客服答案。
+
+## 规则与 prompt
+
+- [Rubric 2.0 完整规则](rubric/rubric.yaml)：业务正确性、当前动作、阅读负担、自然表达、依据、内部支持六个维度。
+- [评分说明](rubric/评分说明.md)：如何保留证据、处理冲突、计算分数。
+- [基础答题指令](prompts/base.txt)＋[风格补充指令](prompts/customer_style_v1.txt)：继续生成建议回复、依据、下一步；只把第一部分发给客户。
+- [评分模型指令](prompts/grader.txt)：只用于评审侧，不交给答题 Agent。
+
+原 Skill 和业务知识未被覆盖。风格补充不包含评分权重或逐题参考答案。
+
+## 复现计分
+
+Python 3.10+，无需安装第三方包，无模型调用或费用。在仓库根目录执行：
+
+```bash
+python3 -m unittest discover -s rubric -p 'test_*.py'
+python3 scripts/score_saved.py --binding examples/binding.json --verdict examples/verdict.json
+```
+
+示例是人工构造的输入结构，全优等级得到 100 分，**不是业务题成绩**。实际使用时替换为本地逐题业务权重和已核验的评分等级。计分函数只做加权与封顶，不生成判定，也不验证业务证据。
+
+完整 Agent 实验还需要私有题集、知识库及各框架部署；本仓库不宣称能一键重跑。本地原始轨迹保留用于审计，公开仓库仅提供整理后的材料。框架源码见 [Hermes_Project](https://github.com/HappynessI/Hermes_Project)。
