@@ -1,0 +1,39 @@
+{
+  "total_records": 4361,
+  "source_format_counts": {
+    "docx": 17,
+    "markdown": 50,
+    "csv": 4294
+  },
+  "classification_status_counts": {
+    "classified": 4296,
+    "insufficient_information": 65
+  },
+  "applied_stage_counts": {
+    "保留前轮结果": 3256,
+    "Turbo宽松复核": 878,
+    "Codex裁定": 227
+  },
+  "problem_type_counts": {
+    "售后问题": 2683,
+    "产品咨询": 894,
+    "售前咨询": 161,
+    "价格优惠": 612,
+    "其他": 189,
+    "退换货": 1051,
+    "物流问题": 210,
+    "催发货": 445,
+    "投诉抱怨": 88
+  },
+  "multi_label_records": 1497,
+  "distinct_visible_messages": 76315,
+  "review_scope": {
+    "selected": 1105,
+    "turbo_adopted": 878,
+    "codex_reviewed": 227,
+    "codex_classified": 162,
+    "insufficient_information": 65
+  },
+  "model": "doubao-seed-2-1-turbo-260628",
+  "notes": "Includes all 4361 records; this is a labelled dialogue pool, not a finalized evaluation set."
+}
