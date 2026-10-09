@@ -22,6 +22,12 @@
 
 [statistics.json](statistics.json) 提供来源、类型及复核统计；[insufficient_ids.json](insufficient_ids.json) 列出65条需补充原文的记录编号，完整正文仍保留在全量文件中。
 
+## 业务类型分布
+
+![业务类型分布柱状图](problem_type_distribution.png)
+
+PS：按记录统计，柱顶为对应记录数；一条对话可以有多个类型，因此各柱数量之和超过4,296。65条信息不足、没有类型标签的记录未计入。
+
 ## 数据字段
 
 每行是一个JSON对象：
