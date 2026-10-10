@@ -1,0 +1,38 @@
+[
+  {
+    "item_id": "hb-v3-001",
+    "preferred": 100,
+    "problematic": 0,
+    "ordered_correctly": true
+  },
+  {
+    "item_id": "hb-v3-007",
+    "preferred": 100,
+    "problematic": 20,
+    "ordered_correctly": true
+  },
+  {
+    "item_id": "hb-v3-012",
+    "preferred": 100,
+    "problematic": 20,
+    "ordered_correctly": true
+  },
+  {
+    "item_id": "hb-v3-025",
+    "preferred": 100,
+    "problematic": 16.0,
+    "ordered_correctly": true
+  },
+  {
+    "item_id": "hb-v3-030",
+    "preferred": 100,
+    "problematic": 16.0,
+    "ordered_correctly": true
+  },
+  {
+    "item_id": "hb-v3-031",
+    "preferred": 84.0,
+    "problematic": 20,
+    "ordered_correctly": true
+  }
+]

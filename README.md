@@ -2,6 +2,10 @@
 
 比较不同 Agent 框架与知识接入方式，并让客服回复更简短、自然、准确。
 
+新增**一线客服支持助手 v3 候选版**：[60题试点](benchmarks/support_v3_pilot60/README.md)（既有会话30＋CSV30；dev40／calibration20）、[新Rubric](rubric/support_v3/评分说明.md)、[候选Skill与system prompt及优化说明](docs/客服支持助手v3优化说明.md)。题集和逐题标准全部待业务确认；私有题集不随公开仓库发布。
+
+已完成[新旧知识库 × LLM-Wiki／Utopia 四组实验](results/support_v3_kb2x2_20261010/README.md)：240份回答、240份评分；平均预览分依次为84.27、88.48、86.60、92.03。实际模型为`doubao-seed-2-1-lite`，候选Skill、system prompt和Rubric固定；这不是对Skill／prompt改动的单独消融。公开完整脱敏回答、精简评分理由、逐题指标和调用用量，业务结论仍待确认。以下旧test50及单题历史结果对应原配置，应分开阅读。
+
 本仓库整理本轮的**评测规则、答题 prompt、8 组运行统计、评分预览、计分代码及处理后的脱敏业务对话数据**。正式实验使用前任 benchmark 的 test 50 题；后续聚焦 Hermes＋原 Skill，对比原文件知识库、LLM-Wiki 与 Utopia。
 
 > 当前处于评分校准阶段，没有经过校准的完整质量排名。单题高分不代表方案整体更好。
@@ -54,12 +58,14 @@
 
 ## 已处理业务数据
 
-新增 [4,361 条业务对话数据](data/processed_dialogues/README.md)：来自 DOCX、Markdown 及 CSV 筛选，经跨来源去重、多标签标注和复核后，**4,296 条已采用类型，65 条信息不足**。公开版保留可见对话与最终类型证据，补充脱敏并移除本地路径和原始字段快照。类型处理已完成；它们是后续题集构建的素材，尚未形成正式评测题或标准答案。
+新增 [4,361 条业务对话数据](data/processed_dialogues/README.md)：来自 DOCX、Markdown 及 CSV 筛选，经跨来源去重、多标签标注和复核后，**4,296 条已采用类型，65 条信息不足**。公开版保留可见对话与最终类型证据，补充脱敏并移除本地路径和原始字段快照。它们是题集构建素材，其中30个CSV节点已用于v3开发与校准试点，尚未形成业务确认的正式测试题。全记录类型不能直接代替会话截止点的当前诉求。
 
 ## 阅读入口
 
 | 文档 | 解决什么问题 |
 |---|---|
+| [v3四组实验结果](results/support_v3_kb2x2_20261010/README.md) | 新旧知识库与两种接入方式的240次作答、评分、配对比较与限制 |
+| [客服支持助手v3优化说明](docs/客服支持助手v3优化说明.md) | 60题试点、内部支持评分和候选Skill／system prompt如何配套 |
 | [新旧 Benchmark 对比](docs/新旧Benchmark对比.md) | 为什么补充新题、用了哪些数据、与旧版有什么区别 |
 | [实验口径](docs/实验口径.md) | 用什么题、模型和配置；哪些数据不能混算 |
 | [本次改动](docs/本次改动.md) | Rubric 2.0 和回复风格 prompt 改了什么 |
@@ -96,6 +102,13 @@ Python 3.10+，无需安装第三方包，无模型调用或费用。在仓库�
 ```bash
 python3 -m unittest discover -s rubric -p 'test_*.py'
 python3 scripts/score_saved.py --binding examples/binding.json --verdict examples/verdict.json
+```
+
+新增v3结构、证据绑定和数据泄漏检查：
+
+```bash
+python3 -m unittest discover -s rubric/support_v3 -p 'test_*.py'
+python3 -m unittest discover -s scripts -p 'test_build_support_v3.py'
 ```
 
 示例是人工构造的输入结构，全优等级得到 100 分，**不是业务题成绩**。实际使用时替换为本地逐题业务权重和已核验的评分等级。计分函数只做加权与封顶，不生成判定，也不验证业务证据。

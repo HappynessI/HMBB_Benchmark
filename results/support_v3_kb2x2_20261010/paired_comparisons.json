@@ -1,0 +1,140 @@
+{
+  "dev": {
+    "Wiki知识更新 B-A": {
+      "paired_n": 40,
+      "mean_delta": 4.08,
+      "bootstrap_95_interval": [
+        -3.05,
+        11.9
+      ],
+      "wins": 17,
+      "ties": 12,
+      "losses": 11
+    },
+    "Utopia知识更新 D-C": {
+      "paired_n": 40,
+      "mean_delta": 4.15,
+      "bootstrap_95_interval": [
+        -2.02,
+        11.5
+      ],
+      "wins": 15,
+      "ties": 15,
+      "losses": 10
+    },
+    "旧库接入差异 C-A": {
+      "paired_n": 40,
+      "mean_delta": 2.25,
+      "bootstrap_95_interval": [
+        -5.72,
+        9.4
+      ],
+      "wins": 15,
+      "ties": 11,
+      "losses": 14
+    },
+    "新库接入差异 D-B": {
+      "paired_n": 40,
+      "mean_delta": 2.33,
+      "bootstrap_95_interval": [
+        -1.88,
+        6.88
+      ],
+      "wins": 13,
+      "ties": 18,
+      "losses": 9
+    }
+  },
+  "calibration": {
+    "Wiki知识更新 B-A": {
+      "paired_n": 20,
+      "mean_delta": 4.5,
+      "bootstrap_95_interval": [
+        -2.8,
+        11.7
+      ],
+      "wins": 8,
+      "ties": 9,
+      "losses": 3
+    },
+    "Utopia知识更新 D-C": {
+      "paired_n": 20,
+      "mean_delta": 8.0,
+      "bootstrap_95_interval": [
+        -0.2,
+        18.75
+      ],
+      "wins": 7,
+      "ties": 10,
+      "losses": 3
+    },
+    "旧库接入差异 C-A": {
+      "paired_n": 20,
+      "mean_delta": 2.5,
+      "bootstrap_95_interval": [
+        -1.75,
+        7.5
+      ],
+      "wins": 5,
+      "ties": 9,
+      "losses": 6
+    },
+    "新库接入差异 D-B": {
+      "paired_n": 20,
+      "mean_delta": 6.0,
+      "bootstrap_95_interval": [
+        -0.2,
+        15.85
+      ],
+      "wins": 5,
+      "ties": 12,
+      "losses": 3
+    }
+  },
+  "all": {
+    "Wiki知识更新 B-A": {
+      "paired_n": 60,
+      "mean_delta": 4.22,
+      "bootstrap_95_interval": [
+        -1.12,
+        9.88
+      ],
+      "wins": 25,
+      "ties": 21,
+      "losses": 14
+    },
+    "Utopia知识更新 D-C": {
+      "paired_n": 60,
+      "mean_delta": 5.43,
+      "bootstrap_95_interval": [
+        0.28,
+        11.42
+      ],
+      "wins": 22,
+      "ties": 25,
+      "losses": 13
+    },
+    "旧库接入差异 C-A": {
+      "paired_n": 60,
+      "mean_delta": 2.33,
+      "bootstrap_95_interval": [
+        -3.1,
+        7.52
+      ],
+      "wins": 20,
+      "ties": 20,
+      "losses": 20
+    },
+    "新库接入差异 D-B": {
+      "paired_n": 60,
+      "mean_delta": 3.55,
+      "bootstrap_95_interval": [
+        -0.22,
+        7.8
+      ],
+      "wins": 18,
+      "ties": 30,
+      "losses": 12
+    }
+  }
+}

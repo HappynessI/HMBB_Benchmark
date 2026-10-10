@@ -1,0 +1,55 @@
+{
+  "version": "support-v3-pilot60-candidate",
+  "total": 60,
+  "source_kinds": {
+    "legacy": 30,
+    "csv": 30
+  },
+  "splits": {
+    "calibration": 20,
+    "dev": 40
+  },
+  "source_groups": 60,
+  "current_turn_types": {
+    "连接配网": 6,
+    "物流状态": 5,
+    "隐私与安全": 1,
+    "功能使用": 6,
+    "优惠活动": 5,
+    "产品咨询": 8,
+    "售后检测": 2,
+    "录像与存储": 5,
+    "账号与隐私": 1,
+    "安装设置": 1,
+    "退款退货": 7,
+    "催发货": 6,
+    "投诉": 4,
+    "发票": 2,
+    "订单修改": 1
+  },
+  "csv_current_turn_types": {
+    "催发货": 6,
+    "物流状态": 4,
+    "退款退货": 6,
+    "优惠活动": 4,
+    "投诉": 4,
+    "发票": 2,
+    "订单修改": 1,
+    "产品咨询": 3
+  },
+  "reference_status": "60 author-reviewed; 0 business-confirmed",
+  "checks": {
+    "source_cutoff": "passed",
+    "source_group_split_isolation": "passed",
+    "knowledge_file_and_section_locations": "passed",
+    "answerer_has_no_grading_fields": "passed"
+  },
+  "limitations": [
+    "No verified sender metadata for CSV",
+    "No verified independent customer identities",
+    "KB snapshot is not a reconstruction of historical policy",
+    "No held-out test; model scores are development previews, not business confirmation",
+    "KB location checks do not establish business truth"
+  ],
+  "development_results": "../../results/support_v3_kb2x2_20261010/README.md"
+}

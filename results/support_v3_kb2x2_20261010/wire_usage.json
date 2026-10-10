@@ -1,0 +1,130 @@
+{
+  "A": {
+    "answer": {
+      "attempted_calls": 763,
+      "completed_calls": 763,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 35,
+      "usage_reported_calls": 763,
+      "input_tokens": 10291072,
+      "output_tokens": 127661,
+      "cached_input_tokens": 6767168,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    },
+    "judge": {
+      "attempted_calls": 79,
+      "completed_calls": 79,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 79,
+      "input_tokens": 758533,
+      "output_tokens": 113315,
+      "cached_input_tokens": 81096,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    }
+  },
+  "B": {
+    "answer": {
+      "attempted_calls": 562,
+      "completed_calls": 562,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 36,
+      "usage_reported_calls": 562,
+      "input_tokens": 7687364,
+      "output_tokens": 108797,
+      "cached_input_tokens": 4597368,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    },
+    "judge": {
+      "attempted_calls": 76,
+      "completed_calls": 76,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 76,
+      "input_tokens": 1007678,
+      "output_tokens": 109513,
+      "cached_input_tokens": 113888,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    }
+  },
+  "C": {
+    "answer": {
+      "attempted_calls": 196,
+      "completed_calls": 196,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 196,
+      "input_tokens": 3683967,
+      "output_tokens": 48559,
+      "cached_input_tokens": 2029072,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    },
+    "judge": {
+      "attempted_calls": 70,
+      "completed_calls": 70,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 70,
+      "input_tokens": 1492744,
+      "output_tokens": 107829,
+      "cached_input_tokens": 88376,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    }
+  },
+  "D": {
+    "answer": {
+      "attempted_calls": 163,
+      "completed_calls": 163,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 163,
+      "input_tokens": 2149732,
+      "output_tokens": 48038,
+      "cached_input_tokens": 986864,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    },
+    "judge": {
+      "attempted_calls": 71,
+      "completed_calls": 71,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 71,
+      "input_tokens": 1487409,
+      "output_tokens": 106780,
+      "cached_input_tokens": 76576,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "groups": {
+    "A": [
+      "old",
+      "llm-wiki"
+    ],
+    "B": [
+      "new",
+      "llm-wiki"
+    ],
+    "C": [
+      "old",
+      "utopia"
+    ],
+    "D": [
+      "new",
+      "utopia"
+    ]
+  },
+  "source_counts": {
+    "old": 25,
+    "new": 29
+  },
+  "split": {
+    "dev": 40,
+    "calibration": 20
+  },
+  "status": "development_comparison_business_pending",
+  "items": 60,
+  "rubric": "support_v3",
+  "model": "doubao-seed-2-1-lite",
+  "top_k": 8,
+  "evidence_char_budget": 24000,
+  "outer_max_iterations": 20,
+  "wiki_inner_max_iterations": 20,
+  "max_output_tokens": 8192,
+  "thinking": "disabled",
+  "answer_workers": 4,
+  "temperature_judge": 0,
+  "utopia_worker_concurrency": 4,
+  "utopia_model_permits": 4,
+  "archive_loaded": false,
+  "business_interfaces": false,
+  "heldout_test": false,
+  "system": "../../prompts/support_v3_system.txt",
+  "skill": "../../candidates/haimababi-support/SKILL.md",
+  "grader": "../../prompts/support_v3_grader.txt",
+  "rubric_file": "../../rubric/support_v3/rubric.json",
+  "run_id": "20261010_support_v3_kb2x2_run1",
+  "business_confirmed": false
+}
