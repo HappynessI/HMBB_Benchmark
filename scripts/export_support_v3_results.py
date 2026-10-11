@@ -13,7 +13,7 @@ import re
 
 GROUPS = 'ABCD'
 METRIC_FIELDS = (
-    'group', 'item_id', 'split', 'backend', 'knowledge_version',
+    'group', 'profile', 'item_id', 'split', 'backend', 'knowledge_version',
     'program_completed', 'format_valid', 'effective_answer', 'degraded',
     'actual_backend', 'wall_seconds', 'exit_code', 'timed_out',
     'turn_exit_reason', 'native_failed', 'budget_exhausted', 'answer_chars',
@@ -25,6 +25,9 @@ MANIFEST_FIELDS = (
     'wiki_inner_max_iterations', 'max_output_tokens', 'thinking',
     'answer_workers', 'temperature_judge', 'utopia_worker_concurrency',
     'utopia_model_permits', 'archive_loaded', 'business_interfaces', 'heldout_test',
+    'items_per_group', 'planned_answers', 'planned_judgments', 'product_primary_ids',
+    'product_primary_count', 'remaining_cases', 'data_training_or_finetuning_performed',
+    'senior_data_loaded_into_answers', 'runtime_adapter',
 )
 TEXT_PATTERNS = (
     ('local_path', r'(?:/Users/|/private/tmp/|/tmp/)[^\s）)\]"<>]+', '[本地路径]'),
@@ -98,13 +101,18 @@ def decision_summary(verdict, clean):
     return result
 
 
-def export(root, report_path, contracts_path, output, alias_source=None):
+def export(root, report_path, contracts_path, output, alias_source=None, profile_comparison=False):
     completion = read(root / 'completion.json')
     if completion['status'] != 'completed':
         raise ValueError('Only a completed run can be exported')
     original_metrics = read(root / 'summary/metrics.json')
-    if len(original_metrics) != 240 or len({(m['group'], m['item_id']) for m in original_metrics}) != 240:
-        raise ValueError('Expected exactly four groups of sixty unique results')
+    original_manifest = read(root / 'experiment_manifest.json')
+    groups = tuple(original_manifest['groups']) if profile_comparison else GROUPS
+    if profile_comparison and set(groups) != {'O_W', 'S_O_W', 'S_N_W', 'O_U', 'S_O_U', 'S_N_U'}:
+        raise ValueError('Expected the six supplementary profile groups')
+    expected = len(groups) * 60
+    if len(original_metrics) != expected or len({(m['group'], m['item_id']) for m in original_metrics}) != expected:
+        raise ValueError('Expected sixty unique results in each group')
     titles = {c['id']: c['title'] for c in rows(contracts_path)}
     clean, redactions = make_cleaner(alias_source)
     output.mkdir(parents=True, exist_ok=True)
@@ -115,19 +123,36 @@ def export(root, report_path, contracts_path, output, alias_source=None):
         writer = csv.DictWriter(file, fieldnames=csv_fields, extrasaction='ignore', lineterminator='\n')
         writer.writeheader()
         writer.writerows(metrics)
-    manifest = read(root / 'experiment_manifest.json')
-    manifest = {k: manifest[k] for k in MANIFEST_FIELDS if k in manifest}
-    manifest.update(system='../../prompts/support_v3_system.txt',
-                    skill='../../candidates/haimababi-support/SKILL.md',
-                    grader='../../prompts/support_v3_grader.txt',
+    manifest = {k: original_manifest[k] for k in MANIFEST_FIELDS if k in original_manifest}
+    manifest.update(grader='../../prompts/support_v3_grader.txt',
                     rubric_file='../../rubric/support_v3/rubric.json',
                     run_id=root.name, business_confirmed=False)
+    if profile_comparison:
+        manifest.update(profiles={'original': '旧system prompt＋旧总Skill',
+                                  'senior': '师兄产品咨询system prompt＋总Skill'},
+                        profile_sources_public=False,
+                        reference_public_results='../support_v3_kb2x2_20261010/',
+                        knowledge_recompiled=original_manifest['knowledge_recompiled'],
+                        utopia_reuses_frozen_kbs=original_manifest['utopia_reuses_frozen_kbs'])
+        for field in ('grading_worker_schedule', 'answer_worker_concurrency', 'parallel_grading_workers'):
+            if field in original_manifest:
+                manifest[field] = original_manifest[field]
+    else:
+        manifest.update(system='../../prompts/support_v3_system.txt',
+                        skill='../../candidates/haimababi-support/SKILL.md')
     write(output / 'experiment_manifest.json', manifest)
     write(output / 'completion.json', completion)
-    for name in ('paired_comparisons', 'wire_usage', 'calibration_pairs'):
+    for name in ('paired_comparisons', 'wire_usage'):
         write(output / (name + '.json'), read(root / 'summary' / (name + '.json')))
+    calibration_dir = 'preflight' if profile_comparison else 'summary'
+    write(output / 'calibration_pairs.json', read(root / calibration_dir / 'calibration_pairs.json'))
+    if profile_comparison:
+        write(output / 'scope_summary.json', read(root / 'summary/scope_summary.json'))
+        audit = read(root / 'summary/local_audit.json')
+        write(output / 'verification.json', {k: audit[k] for k in
+              ('answer_records', 'score_statuses', 'returned_models', 'actual_inputs_checked')})
     totals = {}
-    for group in GROUPS:
+    for group in groups:
         totals[group] = read(root / 'summary' / (group + '.json'))
         selected = sorted((m for m in metrics if m['group'] == group), key=lambda m: m['item_id'])
         if len(selected) != 60:
@@ -146,7 +171,15 @@ def export(root, report_path, contracts_path, output, alias_source=None):
                 raise ValueError('Score and aggregate disagree')
             answer = clean((root / 'answers' / group / ident / 'answer.md').read_text(encoding='utf-8'))
             title = clean(titles[ident])
-            verdict = decision_summary(read(root / 'grading' / group / ident / 'verdict.json'), clean)
+            if score['status'] == 'invalid_verdict':
+                errors = [clean(read(p)['message']) for p in sorted(
+                    (root / 'grading' / group / ident).glob('validation_error_*.json'))]
+                verdict = {'needs_review': None, 'review_reasons': [],
+                           'customer_sendability': None,
+                           'summary': '评分裁决连续三次未通过校验，没有可汇总分数。',
+                           'validation_errors': errors}
+            else:
+                verdict = decision_summary(read(root / 'grading' / group / ident / 'verdict.json'), clean)
             entries.append({'schema_version': 'public-support-v3-result-1',
                             'item_id': ident, 'title': title, 'metrics': metric,
                             'answer': answer, 'score': score, 'judgment_summary': verdict})
@@ -161,18 +194,25 @@ def export(root, report_path, contracts_path, output, alias_source=None):
         (output / f'index_{group}.md').write_text('\n'.join(index) + '\n', encoding='utf-8')
     write(output / 'group_summary.json', totals)
     report = report_path.read_text(encoding='utf-8')
-    for group in GROUPS:
+    for group in groups:
         report = report.replace(str(root / 'summary' / f'{group}_完整回答索引.md'), f'index_{group}.md')
-    for name in ('metrics.csv', 'wire_usage.json'):
+    for metric in metrics:
+        report = report.replace(str(root / 'answers' / metric['group'] / metric['item_id'] / 'answer.md'),
+                                f'answers_{metric["group"]}.md#{metric["item_id"]}')
+    for name in ('metrics.csv', 'wire_usage.json', 'scope_summary.json'):
         report = report.replace(str(root / 'summary' / name), name)
     report = report.replace(str(root / 'experiment_manifest.json'), 'experiment_manifest.json')
     report = report.replace('完整回答与原始评分：', '完整回答与精简评分（原始证据与调用轨迹保持私有）：')
+    report = clean(report)
+    report = re.sub(r'\[([^\]]+)\]\(\[本地路径\]\)', r'\1（私有来源未公开）', report)
     report += '\n公开版说明：逐题文本经二次脱敏；数值指标、分数、维度等级及封顶保持原值。JSONL提供完整模型回答与精简判分理由，不提供客户原始输入、私有知识片段、来源证据表或完整请求。脱敏后的文本不能直接代替原文重建证据行绑定。\n'
     report += '\n指标中的“有效回答”是程序对回答正文与约定结构的检查结果，不能解释为业务正确；“可直接发送”是评分模型判定，尚未经人工业务确认。\n'
     (output / 'report.md').write_text(report, encoding='utf-8')
     write(output / 'publication.json', {
         'schema_version': 'public-support-v3-publication-1', 'run_id': root.name,
-        'answer_records': 240, 'judgment_records': 240,
+        'answer_records': expected, 'judgment_records': expected,
+        'scored_records': sum(m['score'] is not None for m in metrics),
+        'score_statuses': dict(Counter(m['score_status'] for m in metrics)),
         'numeric_metrics_preserved': True, 'business_confirmed': False,
         'text_redaction_counts': dict(sorted((k, v) for k, v in redactions.items() if v)),
         'excluded': ['customer_inputs', 'private_turn_contracts', 'knowledge_snapshots',
@@ -189,5 +229,7 @@ if __name__ == '__main__':
     parser.add_argument('--contracts', required=True, type=Path)
     parser.add_argument('--output-dir', required=True, type=Path)
     parser.add_argument('--alias-source', type=Path)
+    parser.add_argument('--profile-comparison', action='store_true', help='导出六组产品配置补充实验')
     args = parser.parse_args()
-    export(args.run_root.resolve(), args.report, args.contracts, args.output_dir, args.alias_source)
+    export(args.run_root.resolve(), args.report, args.contracts, args.output_dir,
+           args.alias_source, args.profile_comparison)

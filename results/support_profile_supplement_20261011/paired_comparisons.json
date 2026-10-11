@@ -1,0 +1,206 @@
+{
+  "product": {
+    "Wiki：师兄旧库相对原版": {
+      "paired_n": 12,
+      "mean_delta": 10.5,
+      "bootstrap_95_interval": [
+        -7.5,
+        32.08
+      ],
+      "wins": 5,
+      "ties": 0,
+      "losses": 7
+    },
+    "Utopia：师兄旧库相对原版": {
+      "paired_n": 12,
+      "mean_delta": -14.75,
+      "bootstrap_95_interval": [
+        -38.33,
+        8.83
+      ],
+      "wins": 5,
+      "ties": 1,
+      "losses": 6
+    },
+    "Wiki：师兄新库相对原版": {
+      "paired_n": 12,
+      "mean_delta": 8.75,
+      "bootstrap_95_interval": [
+        -15.5,
+        32.5
+      ],
+      "wins": 6,
+      "ties": 0,
+      "losses": 6
+    },
+    "Utopia：师兄新库相对原版": {
+      "paired_n": 12,
+      "mean_delta": -16.58,
+      "bootstrap_95_interval": [
+        -45.67,
+        15.17
+      ],
+      "wins": 6,
+      "ties": 0,
+      "losses": 6
+    },
+    "Wiki：师兄知识库更新": {
+      "paired_n": 12,
+      "mean_delta": -1.75,
+      "bootstrap_95_interval": [
+        -24.17,
+        20.75
+      ],
+      "wins": 2,
+      "ties": 7,
+      "losses": 3
+    },
+    "Utopia：师兄知识库更新": {
+      "paired_n": 12,
+      "mean_delta": -1.83,
+      "bootstrap_95_interval": [
+        -22.25,
+        14.33
+      ],
+      "wins": 4,
+      "ties": 5,
+      "losses": 3
+    }
+  },
+  "other": {
+    "Wiki：师兄旧库相对原版": {
+      "paired_n": 47,
+      "mean_delta": -4.68,
+      "bootstrap_95_interval": [
+        -13.34,
+        4.38
+      ],
+      "wins": 14,
+      "ties": 5,
+      "losses": 28
+    },
+    "Utopia：师兄旧库相对原版": {
+      "paired_n": 48,
+      "mean_delta": -4.56,
+      "bootstrap_95_interval": [
+        -13.25,
+        3.77
+      ],
+      "wins": 18,
+      "ties": 6,
+      "losses": 24
+    },
+    "Wiki：师兄新库相对原版": {
+      "paired_n": 47,
+      "mean_delta": 35.11,
+      "bootstrap_95_interval": [
+        25.17,
+        44.13
+      ],
+      "wins": 39,
+      "ties": 5,
+      "losses": 3
+    },
+    "Utopia：师兄新库相对原版": {
+      "paired_n": 48,
+      "mean_delta": 22.92,
+      "bootstrap_95_interval": [
+        13.27,
+        32.46
+      ],
+      "wins": 35,
+      "ties": 5,
+      "losses": 8
+    },
+    "Wiki：师兄知识库更新": {
+      "paired_n": 48,
+      "mean_delta": 40.71,
+      "bootstrap_95_interval": [
+        30.31,
+        49.94
+      ],
+      "wins": 42,
+      "ties": 1,
+      "losses": 5
+    },
+    "Utopia：师兄知识库更新": {
+      "paired_n": 48,
+      "mean_delta": 27.48,
+      "bootstrap_95_interval": [
+        19.19,
+        35.71
+      ],
+      "wins": 38,
+      "ties": 5,
+      "losses": 5
+    }
+  },
+  "all": {
+    "Wiki：师兄旧库相对原版": {
+      "paired_n": 59,
+      "mean_delta": -1.59,
+      "bootstrap_95_interval": [
+        -9.69,
+        6.73
+      ],
+      "wins": 19,
+      "ties": 5,
+      "losses": 35
+    },
+    "Utopia：师兄旧库相对原版": {
+      "paired_n": 60,
+      "mean_delta": -6.6,
+      "bootstrap_95_interval": [
+        -14.93,
+        1.62
+      ],
+      "wins": 23,
+      "ties": 7,
+      "losses": 30
+    },
+    "Wiki：师兄新库相对原版": {
+      "paired_n": 59,
+      "mean_delta": 29.75,
+      "bootstrap_95_interval": [
+        20.34,
+        39.0
+      ],
+      "wins": 45,
+      "ties": 5,
+      "losses": 9
+    },
+    "Utopia：师兄新库相对原版": {
+      "paired_n": 60,
+      "mean_delta": 15.02,
+      "bootstrap_95_interval": [
+        4.37,
+        25.23
+      ],
+      "wins": 41,
+      "ties": 5,
+      "losses": 14
+    },
+    "Wiki：师兄知识库更新": {
+      "paired_n": 60,
+      "mean_delta": 32.22,
+      "bootstrap_95_interval": [
+        22.27,
+        42.18
+      ],
+      "wins": 44,
+      "ties": 8,
+      "losses": 8
+    },
+    "Utopia：师兄知识库更新": {
+      "paired_n": 60,
+      "mean_delta": 21.62,
+      "bootstrap_95_interval": [
+        13.28,
+        29.63
+      ],
+      "wins": 42,
+      "ties": 10,
+      "losses": 8
+    }
+  }
+}
