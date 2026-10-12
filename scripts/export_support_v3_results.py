@@ -124,22 +124,22 @@ def export(root, report_path, contracts_path, output, alias_source=None, profile
         writer.writeheader()
         writer.writerows(metrics)
     manifest = {k: original_manifest[k] for k in MANIFEST_FIELDS if k in original_manifest}
-    manifest.update(grader='../../prompts/support_v3_grader.txt',
-                    rubric_file='../../rubric/support_v3/rubric.json',
+    manifest.update(grader='../../config/grader_prompt.txt',
+                    rubric_file='../../benchmark/rubric.json',
                     run_id=root.name, business_confirmed=False)
     if profile_comparison:
         manifest.update(profiles={'original': '旧system prompt＋旧总Skill',
                                   'senior': '师兄产品咨询system prompt＋总Skill'},
                         profile_sources_public=False,
-                        reference_public_results='../support_v3_kb2x2_20261010/',
+                        reference_public_results='../../README.md',
                         knowledge_recompiled=original_manifest['knowledge_recompiled'],
                         utopia_reuses_frozen_kbs=original_manifest['utopia_reuses_frozen_kbs'])
         for field in ('grading_worker_schedule', 'answer_worker_concurrency', 'parallel_grading_workers'):
             if field in original_manifest:
                 manifest[field] = original_manifest[field]
     else:
-        manifest.update(system='../../prompts/support_v3_system.txt',
-                        skill='../../candidates/haimababi-support/SKILL.md')
+        manifest.update(system='../../config/system_prompt.txt',
+                        skill='../../config/SKILL.md')
     write(output / 'experiment_manifest.json', manifest)
     write(output / 'completion.json', completion)
     for name in ('paired_comparisons', 'wire_usage'):

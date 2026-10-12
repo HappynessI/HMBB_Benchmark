@@ -156,17 +156,14 @@ def main():
     write_jsonl(args.output / 'grading/contracts.jsonl', contracts)
     write_jsonl(args.output / 'provenance.jsonl', provenance)
     (args.output / '审阅版.md').write_text(render_review(items, contracts, provenance), encoding='utf-8')
-    manifest = {'version': 'support-v3-pilot60-candidate', 'total': len(items),
+    manifest = {'version': 'support60-v3', 'total': len(items),
                 'source_kinds': dict(Counter(p['source_kind'] for p in provenance)),
                 'splits': dict(Counter(c['split'] for c in contracts)), 'source_groups': len({p['group_id'] for p in provenance}),
                 'current_turn_types': dict(Counter(c['business_type'] for c in contracts)),
                 'csv_current_turn_types': dict(Counter(c['business_type'] for c,p in zip(contracts,provenance) if p['source_kind']=='csv')),
-                'reference_status': '60 author-reviewed; 0 business-confirmed',
                 'checks': {'source_cutoff': 'passed', 'source_group_split_isolation': 'passed',
                            'knowledge_file_and_section_locations': 'passed', 'answerer_has_no_grading_fields': 'passed'},
-                'limitations': ['No verified sender metadata for CSV', 'No verified independent customer identities',
-                                'KB snapshot is not a reconstruction of historical policy',
-                                'No held-out test; model scores are development previews, not business confirmation', 'KB location checks do not establish business truth']}
+                'experiment_results': '../README.md'}
     if args.manifest:
         args.manifest.parent.mkdir(parents=True, exist_ok=True)
         args.manifest.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')

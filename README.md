@@ -1,119 +1,37 @@
-# 海马爸比客服 Agent 评测
+# 海马爸比客服助手评测
 
-比较不同 Agent 框架与知识接入方式，并让客服回复更简短、自然、准确。
+当前 benchmark 为60题：既有会话30题、CSV会话30题，包含40道开发题和20道校准题。模型为 `doubao-seed-2-1-lite`，十组实验均采用同一套 Rubric v3。
 
-新增**一线客服支持助手 v3 候选版**：[60题试点](benchmarks/support_v3_pilot60/README.md)（既有会话30＋CSV30；dev40／calibration20）、[新Rubric](rubric/support_v3/评分说明.md)、[候选Skill与system prompt及优化说明](docs/客服支持助手v3优化说明.md)。题集和逐题标准全部待业务确认；私有题集不随公开仓库发布。
+## 十组实验结果
 
-已完成[新旧知识库 × LLM-Wiki／Utopia 四组实验](results/support_v3_kb2x2_20261010/README.md)：240份回答、240份评分；平均预览分依次为84.27、88.48、86.60、92.03。实际模型为`doubao-seed-2-1-lite`，候选Skill、system prompt和Rubric固定；这不是对Skill／prompt改动的单独消融。公开完整脱敏回答、精简评分理由、逐题指标和调用用量，业务结论仍待确认。以下旧test50及单题历史结果对应原配置，应分开阅读。
+之前的四组实验与补充的六组实验合并如下。每组60题，共600份作答、599份数值评分。产品12题是60题中的固定子集；之前四组的产品子集分数由已有评分重新汇总，未重新作答。
 
-新增[完整原版与师兄产品版的六组补充实验](results/support_profile_supplement_20261011/README.md)：360份回答记录、359份有效预览分、1份裁决无效。12道产品主比较题中，原版／师兄旧库／师兄新库的均分分别为Wiki **47.50／58.00／56.25**、Utopia **63.58／48.83／47.00**；其余48题单独报告。实际模型仍为`doubao-seed-2-1-lite`。Wiki均分提高，Utopia出现更多检索超限；尚不能认定师兄版稳定优于原版。公开完整脱敏回答、评分摘要、指标与问题分析。
+| system prompt＋总 Skill | 知识库 | Wiki：全部60题 | Utopia：全部60题 | Wiki：产品12题 | Utopia：产品12题 |
+|---|---|---:|---:|---:|---:|
+| 旧版 | 旧 | [53.53](results/answers/original_old_wiki.md) | [65.77](results/answers/original_old_utopia.md) | [47.50](results/answers/original_old_wiki.md) | [63.58](results/answers/original_old_utopia.md) |
+| 我的 v3 | 旧 | [84.27](results/answers/user_v3_old_wiki.md) | [86.60](results/answers/user_v3_old_utopia.md) | [74.58](results/answers/user_v3_old_wiki.md) | [78.00](results/answers/user_v3_old_utopia.md) |
+| 我的 v3 | 新 | [88.48](results/answers/user_v3_new_wiki.md) | [92.03](results/answers/user_v3_new_utopia.md) | [80.00](results/answers/user_v3_new_wiki.md) | [86.33](results/answers/user_v3_new_utopia.md) |
+| 师兄版 | 旧 | [51.15](results/answers/senior_old_wiki.md) | [59.17](results/answers/senior_old_utopia.md) | [58.00](results/answers/senior_old_wiki.md) | [48.83](results/answers/senior_old_utopia.md) |
+| 师兄版 | 新 | [83.37](results/answers/senior_new_wiki.md) | [80.78](results/answers/senior_new_utopia.md) | [56.25](results/answers/senior_new_wiki.md) | [47.00](results/answers/senior_new_utopia.md) |
 
-本仓库整理本轮的**评测规则、答题 prompt、8 组运行统计、评分预览、计分代码及处理后的脱敏业务对话数据**。正式实验使用前任 benchmark 的 test 50 题；后续聚焦 Hermes＋原 Skill，对比原文件知识库、LLM-Wiki 与 Utopia。
+分数范围为0—100，点击分数可查看该组完整回答。旧版 Wiki 的全题均分采用59份数值评分；其他九组采用60份。产品子集每组都有12份数值评分。
 
-> 当前处于评分校准阶段，没有经过校准的完整质量排名。单题高分不代表方案整体更好。
+配置含义：旧版使用旧system prompt和旧总Skill；“我的 v3”使用更新后的客服支持system prompt和总Skill；师兄版使用产品咨询system prompt和总Skill。旧、新知识库分别包含25、29份文件。
 
-## 为什么补充新 benchmark
+## 文件入口
 
-真实会话题 **hb-real-001（换地点后连不上）** 暴露了一个问题：Hermes＋原 Skill＋原知识库生成的回复，一次给出多个追问、通用检查和后续排查分支，不符合对接方文档中“短句、多轮、逐步引导”的要求，却在旧规则评分演示中拿到了 **100 分**。同一份答案用 Rubric 2.0 重评后为 **31.79 分**。
-
-<details>
-<summary>展开查看实际输出的“建议回复”原文</summary>
-
-```markdown
-## 建议回复（可直接发给客户）
-
-您好，先别着急，我们一起看一下～ 设备换了个地方使用，通常相当于换到了一个新的 Wi‑Fi 网络环境，这种情况大多需要把设备重新联网才能恢复，不一定是机器坏了，我们先逐步排查。
-
-为了给您**准确**的步骤（不同型号的指示灯表现和重新联网方式不一样），麻烦您先告诉我三点：
-1. 您用的是哪一款看护器？（例如四代 / 三代 / 二代焕新版 / 二代 PLUS，或包装、APP 里显示的型号）
-2. 现在指示灯具体是什么状态：红灯闪烁 / 红灯常亮 / 蓝灯闪烁 / 完全不亮？
-3. 这台设备是**第一次添加**，还是**原来已绑定、这次换了地方才连不上**？
-
-在您回复之前，可以先做几项**通用检查**（不涉及重置，放心操作）：
-- 使用原装电源适配器供电，确认插头插紧、供电正常；
-- 确认新位置的 Wi‑Fi 名称和密码正确，且该 Wi‑Fi 能正常上网；
-- 把看护器尽量靠近路由器，减少隔墙遮挡，并远离金属物、微波炉等干扰源；
-- 如果路由器是光猫自带路由或 AP 面板，可能相对不稳定；
-- 手机蓝牙打开，APP 更新到最新版，并用主账号操作。
-
-特别提醒两点：
-- 无论后续用哪种方式重新联网，请**先不要删除 APP 里的设备、不要解绑、不要更换绑定账号**，以免影响已有的视频 / 图片记录；
-- 看护器只是辅助看护设备，这段时间如果您无法远程查看，请务必安排家人就近看护宝宝。
-
-如果插电后指示灯**完全没有反应**，请先换回原装电源适配器或原装 Type‑C 电源线再试一次，排查供电异常；若用原装供电仍无反应、也无法重置，我们再帮您转官方售后检测。您把上面三点信息发给我，我马上给您对应的重新联网步骤～
-```
-
-</details>
-
-| 评分规则 | 同一份完整答案的分数 | 评分差异 |
-|---|---:|---|
-| 旧 rubric＋临时演示公式 | 100 | 当时判定主要认可业务要点覆盖，未充分识别本轮追问和排查内容过多的问题。 |
-| Rubric 2.0 | 31.79 | 单独评价本轮处理顺序、客户阅读与执行负担、自然表达及依据；本轮决策、客户负担和依据三个维度均被判为 0 分。 |
-
-具体问题是：回复未先确认网络是否变化，就把“换地点”推断为“换到新的 Wi-Fi”；同时向客户提出 **3 个问题、5 项通用检查**，并提前展开无灯反应、供电排查和售后检测等后续分支。内容覆盖较多，并不等于当前这一轮能帮助客服简短、准确地推进沟通。
-
-**评分对象是包含“建议回复、依据、下一步”的完整答案，上面仅展示客户回复部分；重评没有重新生成答案。** 100 分是旧规则的演示值，原评分器缺失，不能视为恢复了旧算法；31.79 分来自 Rubric 2.0，尚非 v3 评测成绩。两次均为单题预览，业务判定仍待校准；v2 理由中还存在把“此前已绑定”当作已知的争议。完整评分记录与限制见 [评分预览历史](results/评分预览历史.md)。
-
-因此，本次评测改进包括两部分：一是增加 Rubric 2.0，对回复负担、自然表达和本轮处理顺序单独评分；二是补充真实会话题，检查模型在实际对话节点能否选对当前该问什么、该做什么。旧 200 题保留作回归基线。
-
-新 120 题来自 **17 份对话 DOCX 和一份聊天汇编中的 50 段案例**，共 67 段来源案例。参考答案仍按旧知识库另写，尚未经业务确认。具体对照和数据处理见 [新旧 Benchmark 对比](docs/新旧Benchmark对比.md)。
-
-## 已处理业务数据
-
-新增 [4,361 条业务对话数据](data/processed_dialogues/README.md)：来自 DOCX、Markdown 及 CSV 筛选，经跨来源去重、多标签标注和复核后，**4,296 条已采用类型，65 条信息不足**。公开版保留可见对话与最终类型证据，补充脱敏并移除本地路径和原始字段快照。它们是题集构建素材，其中30个CSV节点已用于v3开发与校准试点，尚未形成业务确认的正式测试题。全记录类型不能直接代替会话截止点的当前诉求。
-
-## 阅读入口
-
-| 文档 | 解决什么问题 |
+| 内容 | 位置 |
 |---|---|
-| [v3四组实验结果](results/support_v3_kb2x2_20261010/README.md) | 新旧知识库与两种接入方式的240次作答、评分、配对比较与限制 |
-| [产品类别六组补充实验](results/support_profile_supplement_20261011/README.md) | 完整原版与师兄版的360次作答记录、评分、产品主比较与问题分析 |
-| [客服支持助手v3优化说明](docs/客服支持助手v3优化说明.md) | 60题试点、内部支持评分和候选Skill／system prompt如何配套 |
-| [新旧 Benchmark 对比](docs/新旧Benchmark对比.md) | 为什么补充新题、用了哪些数据、与旧版有什么区别 |
-| [实验口径](docs/实验口径.md) | 用什么题、模型和配置；哪些数据不能混算 |
-| [本次改动](docs/本次改动.md) | Rubric 2.0 和回复风格 prompt 改了什么 |
-| [旧 test50：8 组运行结果](results/旧test50运行结果.md) | 400 次运行的完成情况、耗时、token、错误与逐题指标 |
-| [评分预览历史](results/评分预览历史.md) | 各阶段已有分数、重评关系及判分争议 |
-| [单题结果](results/单题结果.md) | 完整客户回复、长度变化、初评分数与待解决问题 |
+| 当前60题 benchmark | [说明](benchmark/README.md) · [题目构成](benchmark/manifest.json) |
+| 当前评分规则 | [评分说明](benchmark/评分说明.md) · [Rubric](benchmark/rubric.json) |
+| 我的 v3 配置 | [system prompt](config/system_prompt.txt) · [总 Skill](config/SKILL.md) · [评分 prompt](config/grader_prompt.txt) |
+| 十组详细指标 | [逐题指标](results/metrics.csv) · [分组汇总](results/summary.json) |
+| 实验参数与用量 | [配置](results/configurations.json) · [调用用量](results/usage.json) |
+| 4,361条业务对话数据 | [数据说明](data/processed_dialogues/README.md) |
 
-## 已有实验范围
-
-旧 test50 已记录 **8 组 × 50 题＝400 次运行**，369 次程序完成，366 条具有约定的三个标题。完整统一业务评分尚未完成，格式合格不等于答案正确。
-
-另外已做过新旧各一题评分预览、同答案 Rubric 2.0 重评，以及新题在 LLM-Wiki / Utopia 下的原版和风格版测试。新 120 题未开展全量评测。批次汇总与全部逐题指标已上传；公开提供处理后的脱敏对话素材；原始客户文件和完整调用轨迹保持私有。
-
-## 本轮最重要的发现
-
-- 加入“一轮只聚焦一个关键问题或排查阶段”的要求后，同题客户回复从 **714 / 544** 个字符缩短到 **103 / 121** 个字符（LLM-Wiki / Utopia，不计空白）。
-- 变短不等于变正确：LLM-Wiki 把“换地点”直接当作“换 Wi-Fi”；Utopia 保留条件并先确认网络是否变化。
-- 新回复初评为 **70 / 94.64 分**，但评分边界仍有争议，均标记待复核。
-- 运行完成不等于有效作答：旧 LLM-Wiki test50 批次有 3 条输出工具标记而非客服答案。
-
-## 规则与 prompt
-
-- [Rubric 2.0 完整规则](rubric/rubric.yaml)：业务正确性、当前动作、阅读负担、自然表达、依据、内部支持六个维度。
-- [评分说明](rubric/评分说明.md)：如何保留证据、处理冲突、计算分数。
-- [基础答题指令](prompts/base.txt)＋[风格补充指令](prompts/customer_style_v1.txt)：继续生成建议回复、依据、下一步；只把第一部分发给客户。
-- [评分模型指令](prompts/grader.txt)：只用于评审侧，不交给答题 Agent。
-
-原 Skill 和业务知识未被覆盖。风格补充不包含评分权重或逐题参考答案。
-
-## 复现计分
-
-Python 3.10+，无需安装第三方包，无模型调用或费用。在仓库根目录执行：
+## 计分与检查
 
 ```bash
-python3 -m unittest discover -s rubric -p 'test_*.py'
-python3 scripts/score_saved.py --binding examples/binding.json --verdict examples/verdict.json
-```
-
-新增v3结构、证据绑定和数据泄漏检查：
-
-```bash
-python3 -m unittest discover -s rubric/support_v3 -p 'test_*.py'
+python3 -m unittest discover -s benchmark -p 'test_*.py'
 python3 -m unittest discover -s scripts -p 'test_build_support_v3.py'
 ```
-
-示例是人工构造的输入结构，全优等级得到 100 分，**不是业务题成绩**。实际使用时替换为本地逐题业务权重和已核验的评分等级。计分函数只做加权与封顶，不生成判定，也不验证业务证据。
-
-完整 Agent 实验还需要现有私有评测题集、知识库及各框架部署；本仓库不宣称能一键重跑。本地原始轨迹保留用于审计，公开仓库仅提供整理后的材料。框架源码见 [Hermes_Project](https://github.com/HappynessI/Hermes_Project)。

@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 import sys
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'rubric/support_v3'))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'benchmark'))
 from verdict import checked_score, evidence_catalog
 
 
@@ -27,7 +27,7 @@ def main():
     parser.add_argument('--catalog-only', action='store_true')
     parser.add_argument('--contract', type=Path, help='One JSON object or private contracts.jsonl with --id')
     parser.add_argument('--id', help='Select one contract from JSONL')
-    parser.add_argument('--verdict', type=Path, help='Rich verdict in prompts/support_v3_grader.txt format')
+    parser.add_argument('--verdict', type=Path, help='Rich verdict in config/grader_prompt.txt format')
     parser.add_argument('--sources', type=Path, help='Grader-side source-ID catalog, e.g. {"K1":"path > section"}')
     args = parser.parse_args()
     answer = args.answer.read_text(encoding='utf-8')

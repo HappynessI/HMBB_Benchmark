@@ -1,0 +1,322 @@
+{
+  "original_old_wiki": {
+    "answer": {
+      "attempted_calls": 605,
+      "completed_calls": 605,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 7,
+      "transport_error_events": 0,
+      "adapted_calls": 40,
+      "usage_reported_calls": 598,
+      "input_tokens": 7607285,
+      "output_tokens": 111473,
+      "cached_input_tokens": 4864576,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    },
+    "judge": {
+      "attempted_calls": 79,
+      "completed_calls": 79,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 79,
+      "input_tokens": 741704,
+      "output_tokens": 117448,
+      "cached_input_tokens": 99528,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    }
+  },
+  "original_old_utopia": {
+    "answer": {
+      "attempted_calls": 257,
+      "completed_calls": 257,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 257,
+      "input_tokens": 5848960,
+      "output_tokens": 50619,
+      "cached_input_tokens": 3761392,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    },
+    "judge": {
+      "attempted_calls": 71,
+      "completed_calls": 71,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 71,
+      "input_tokens": 1825277,
+      "output_tokens": 112482,
+      "cached_input_tokens": 77688,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    }
+  },
+  "user_v3_old_wiki": {
+    "answer": {
+      "attempted_calls": 763,
+      "completed_calls": 763,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 35,
+      "usage_reported_calls": 763,
+      "input_tokens": 10291072,
+      "output_tokens": 127661,
+      "cached_input_tokens": 6767168,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    },
+    "judge": {
+      "attempted_calls": 79,
+      "completed_calls": 79,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 79,
+      "input_tokens": 758533,
+      "output_tokens": 113315,
+      "cached_input_tokens": 81096,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    }
+  },
+  "user_v3_old_utopia": {
+    "answer": {
+      "attempted_calls": 196,
+      "completed_calls": 196,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 196,
+      "input_tokens": 3683967,
+      "output_tokens": 48559,
+      "cached_input_tokens": 2029072,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    },
+    "judge": {
+      "attempted_calls": 70,
+      "completed_calls": 70,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 70,
+      "input_tokens": 1492744,
+      "output_tokens": 107829,
+      "cached_input_tokens": 88376,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    }
+  },
+  "user_v3_new_wiki": {
+    "answer": {
+      "attempted_calls": 562,
+      "completed_calls": 562,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 36,
+      "usage_reported_calls": 562,
+      "input_tokens": 7687364,
+      "output_tokens": 108797,
+      "cached_input_tokens": 4597368,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    },
+    "judge": {
+      "attempted_calls": 76,
+      "completed_calls": 76,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 76,
+      "input_tokens": 1007678,
+      "output_tokens": 109513,
+      "cached_input_tokens": 113888,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    }
+  },
+  "user_v3_new_utopia": {
+    "answer": {
+      "attempted_calls": 163,
+      "completed_calls": 163,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 163,
+      "input_tokens": 2149732,
+      "output_tokens": 48038,
+      "cached_input_tokens": 986864,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    },
+    "judge": {
+      "attempted_calls": 71,
+      "completed_calls": 71,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 71,
+      "input_tokens": 1487409,
+      "output_tokens": 106780,
+      "cached_input_tokens": 76576,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    }
+  },
+  "senior_old_wiki": {
+    "answer": {
+      "attempted_calls": 596,
+      "completed_calls": 596,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 36,
+      "usage_reported_calls": 596,
+      "input_tokens": 7587569,
+      "output_tokens": 99030,
+      "cached_input_tokens": 4631000,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    },
+    "judge": {
+      "attempted_calls": 84,
+      "completed_calls": 84,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 84,
+      "input_tokens": 733934,
+      "output_tokens": 111011,
+      "cached_input_tokens": 102024,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    }
+  },
+  "senior_old_utopia": {
+    "answer": {
+      "attempted_calls": 351,
+      "completed_calls": 351,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 3,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 348,
+      "input_tokens": 11259110,
+      "output_tokens": 35340,
+      "cached_input_tokens": 7840521,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    },
+    "judge": {
+      "attempted_calls": 72,
+      "completed_calls": 72,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 72,
+      "input_tokens": 1997351,
+      "output_tokens": 101822,
+      "cached_input_tokens": 114456,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    }
+  },
+  "senior_new_wiki": {
+    "answer": {
+      "attempted_calls": 579,
+      "completed_calls": 579,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 3,
+      "transport_error_events": 0,
+      "adapted_calls": 38,
+      "usage_reported_calls": 576,
+      "input_tokens": 8478527,
+      "output_tokens": 94341,
+      "cached_input_tokens": 5295704,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    },
+    "judge": {
+      "attempted_calls": 72,
+      "completed_calls": 72,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 72,
+      "input_tokens": 908203,
+      "output_tokens": 101943,
+      "cached_input_tokens": 136272,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    }
+  },
+  "senior_new_utopia": {
+    "answer": {
+      "attempted_calls": 351,
+      "completed_calls": 351,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 351,
+      "input_tokens": 12259214,
+      "output_tokens": 36838,
+      "cached_input_tokens": 8512589,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    },
+    "judge": {
+      "attempted_calls": 69,
+      "completed_calls": 69,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 69,
+      "input_tokens": 2047807,
+      "output_tokens": 96639,
+      "cached_input_tokens": 128080,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    }
+  }
+}

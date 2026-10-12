@@ -1,0 +1,341 @@
+{
+  "groups": {
+    "original_old_wiki": {
+      "all60": {
+        "answers": 60,
+        "scored": 59,
+        "mean_score": 53.53,
+        "program_completed": 60,
+        "format_valid": 60,
+        "effective_answer": 60,
+        "degraded": 5,
+        "budget_exhausted": 0,
+        "severe_cap_count": 7,
+        "send_as_is": 10,
+        "score_statuses": {
+          "preview_scored": 59,
+          "invalid_verdict": 1
+        }
+      },
+      "product12": {
+        "answers": 12,
+        "scored": 12,
+        "mean_score": 47.5,
+        "program_completed": 12,
+        "format_valid": 12,
+        "effective_answer": 12,
+        "degraded": 2,
+        "budget_exhausted": 0,
+        "severe_cap_count": 4,
+        "send_as_is": 2,
+        "score_statuses": {
+          "preview_scored": 12
+        }
+      }
+    },
+    "original_old_utopia": {
+      "all60": {
+        "answers": 60,
+        "scored": 60,
+        "mean_score": 65.77,
+        "program_completed": 57,
+        "format_valid": 59,
+        "effective_answer": 59,
+        "degraded": 0,
+        "budget_exhausted": 3,
+        "severe_cap_count": 7,
+        "send_as_is": 8,
+        "score_statuses": {
+          "preview_scored": 60
+        }
+      },
+      "product12": {
+        "answers": 12,
+        "scored": 12,
+        "mean_score": 63.58,
+        "program_completed": 10,
+        "format_valid": 11,
+        "effective_answer": 11,
+        "degraded": 0,
+        "budget_exhausted": 2,
+        "severe_cap_count": 3,
+        "send_as_is": 0,
+        "score_statuses": {
+          "preview_scored": 12
+        }
+      }
+    },
+    "user_v3_old_wiki": {
+      "all60": {
+        "answers": 60,
+        "scored": 60,
+        "mean_score": 84.27,
+        "program_completed": 60,
+        "format_valid": 60,
+        "effective_answer": 60,
+        "degraded": 6,
+        "budget_exhausted": 0,
+        "severe_cap_count": 3,
+        "send_as_is": 31,
+        "score_statuses": {
+          "preview_scored": 60
+        }
+      },
+      "product12": {
+        "answers": 12,
+        "scored": 12,
+        "mean_score": 74.58,
+        "program_completed": 12,
+        "format_valid": 12,
+        "effective_answer": 12,
+        "degraded": 1,
+        "budget_exhausted": 0,
+        "severe_cap_count": 2,
+        "send_as_is": 5,
+        "score_statuses": {
+          "preview_scored": 12
+        }
+      }
+    },
+    "user_v3_old_utopia": {
+      "all60": {
+        "answers": 60,
+        "scored": 60,
+        "mean_score": 86.6,
+        "program_completed": 58,
+        "format_valid": 59,
+        "effective_answer": 59,
+        "degraded": 0,
+        "budget_exhausted": 2,
+        "severe_cap_count": 3,
+        "send_as_is": 29,
+        "score_statuses": {
+          "preview_scored": 60
+        }
+      },
+      "product12": {
+        "answers": 12,
+        "scored": 12,
+        "mean_score": 78.0,
+        "program_completed": 12,
+        "format_valid": 12,
+        "effective_answer": 12,
+        "degraded": 0,
+        "budget_exhausted": 0,
+        "severe_cap_count": 1,
+        "send_as_is": 3,
+        "score_statuses": {
+          "preview_scored": 12
+        }
+      }
+    },
+    "user_v3_new_wiki": {
+      "all60": {
+        "answers": 60,
+        "scored": 60,
+        "mean_score": 88.48,
+        "program_completed": 60,
+        "format_valid": 60,
+        "effective_answer": 60,
+        "degraded": 6,
+        "budget_exhausted": 0,
+        "severe_cap_count": 2,
+        "send_as_is": 35,
+        "score_statuses": {
+          "preview_scored": 60
+        }
+      },
+      "product12": {
+        "answers": 12,
+        "scored": 12,
+        "mean_score": 80.0,
+        "program_completed": 12,
+        "format_valid": 12,
+        "effective_answer": 12,
+        "degraded": 1,
+        "budget_exhausted": 0,
+        "severe_cap_count": 1,
+        "send_as_is": 5,
+        "score_statuses": {
+          "preview_scored": 12
+        }
+      }
+    },
+    "user_v3_new_utopia": {
+      "all60": {
+        "answers": 60,
+        "scored": 60,
+        "mean_score": 92.03,
+        "program_completed": 60,
+        "format_valid": 60,
+        "effective_answer": 60,
+        "degraded": 0,
+        "budget_exhausted": 0,
+        "severe_cap_count": 1,
+        "send_as_is": 33,
+        "score_statuses": {
+          "preview_scored": 60
+        }
+      },
+      "product12": {
+        "answers": 12,
+        "scored": 12,
+        "mean_score": 86.33,
+        "program_completed": 12,
+        "format_valid": 12,
+        "effective_answer": 12,
+        "degraded": 0,
+        "budget_exhausted": 0,
+        "severe_cap_count": 0,
+        "send_as_is": 4,
+        "score_statuses": {
+          "preview_scored": 12
+        }
+      }
+    },
+    "senior_old_wiki": {
+      "all60": {
+        "answers": 60,
+        "scored": 60,
+        "mean_score": 51.15,
+        "program_completed": 60,
+        "format_valid": 60,
+        "effective_answer": 60,
+        "degraded": 4,
+        "budget_exhausted": 0,
+        "severe_cap_count": 10,
+        "send_as_is": 13,
+        "score_statuses": {
+          "preview_scored": 60
+        }
+      },
+      "product12": {
+        "answers": 12,
+        "scored": 12,
+        "mean_score": 58.0,
+        "program_completed": 12,
+        "format_valid": 12,
+        "effective_answer": 12,
+        "degraded": 1,
+        "budget_exhausted": 0,
+        "severe_cap_count": 4,
+        "send_as_is": 5,
+        "score_statuses": {
+          "preview_scored": 12
+        }
+      }
+    },
+    "senior_old_utopia": {
+      "all60": {
+        "answers": 60,
+        "scored": 60,
+        "mean_score": 59.17,
+        "program_completed": 51,
+        "format_valid": 55,
+        "effective_answer": 55,
+        "degraded": 0,
+        "budget_exhausted": 9,
+        "severe_cap_count": 10,
+        "send_as_is": 18,
+        "score_statuses": {
+          "preview_scored": 60
+        }
+      },
+      "product12": {
+        "answers": 12,
+        "scored": 12,
+        "mean_score": 48.83,
+        "program_completed": 7,
+        "format_valid": 9,
+        "effective_answer": 9,
+        "degraded": 0,
+        "budget_exhausted": 5,
+        "severe_cap_count": 5,
+        "send_as_is": 4,
+        "score_statuses": {
+          "preview_scored": 12
+        }
+      }
+    },
+    "senior_new_wiki": {
+      "all60": {
+        "answers": 60,
+        "scored": 60,
+        "mean_score": 83.37,
+        "program_completed": 60,
+        "format_valid": 60,
+        "effective_answer": 60,
+        "degraded": 5,
+        "budget_exhausted": 0,
+        "severe_cap_count": 5,
+        "send_as_is": 34,
+        "score_statuses": {
+          "preview_scored": 60
+        }
+      },
+      "product12": {
+        "answers": 12,
+        "scored": 12,
+        "mean_score": 56.25,
+        "program_completed": 12,
+        "format_valid": 12,
+        "effective_answer": 12,
+        "degraded": 3,
+        "budget_exhausted": 0,
+        "severe_cap_count": 4,
+        "send_as_is": 5,
+        "score_statuses": {
+          "preview_scored": 12
+        }
+      }
+    },
+    "senior_new_utopia": {
+      "all60": {
+        "answers": 60,
+        "scored": 60,
+        "mean_score": 80.78,
+        "program_completed": 50,
+        "format_valid": 53,
+        "effective_answer": 53,
+        "degraded": 0,
+        "budget_exhausted": 10,
+        "severe_cap_count": 8,
+        "send_as_is": 35,
+        "score_statuses": {
+          "preview_scored": 60
+        }
+      },
+      "product12": {
+        "answers": 12,
+        "scored": 12,
+        "mean_score": 47.0,
+        "program_completed": 7,
+        "format_valid": 7,
+        "effective_answer": 7,
+        "degraded": 0,
+        "budget_exhausted": 5,
+        "severe_cap_count": 6,
+        "send_as_is": 4,
+        "score_statuses": {
+          "preview_scored": 12
+        }
+      }
+    }
+  },
+  "product_item_ids": [
+    "hb-v3-008",
+    "hb-v3-009",
+    "hb-v3-011",
+    "hb-v3-013",
+    "hb-v3-014",
+    "hb-v3-015",
+    "hb-v3-022",
+    "hb-v3-023",
+    "hb-v3-026",
+    "hb-v3-027",
+    "hb-v3-059",
+    "hb-v3-060"
+  ],
+  "answer_records": 600,
+  "scored_records": 599
+}
