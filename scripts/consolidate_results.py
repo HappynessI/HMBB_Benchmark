@@ -139,15 +139,18 @@ def consolidate(previous, supplementary, output, readme):
                '| 十组详细指标 | [逐题指标](results/metrics.csv) · [分组汇总](results/summary.json) |',
                '| 实验参数与用量 | [配置](results/configurations.json) · [调用用量](results/usage.json) |',
                '| 4,361条业务对话数据 | [数据说明](data/processed_dialogues/README.md) |', '']
-    # 只更新实验结果，保留创建背景等人工维护的章节。
+    # 只更新结果表和配置说明，保留创建背景与人工补充的展开解读。
     existing = readme.read_text(encoding='utf-8')
     heading = '## 十组实验结果\n'
     start = existing.index(heading)
     end = existing.index('\n## ', start + len(heading))
+    section = existing[start:end]
+    details_start = section.find('\n<details>\n')
+    explanation = section[details_start:] if details_start >= 0 else ''
     generated = '\n'.join(report)
     generated_start = generated.index(heading)
     generated_end = generated.index('\n## 文件入口', generated_start)
-    readme.write_text(existing[:start] + generated[generated_start:generated_end] + existing[end:],
+    readme.write_text(existing[:start] + generated[generated_start:generated_end] + explanation + existing[end:],
                       encoding='utf-8')
     print(json.dumps({'groups': len(summaries), 'answers': len(metrics),
                       'scored': 599, 'product_scores': len(primary) * len(summaries)}, ensure_ascii=False))
