@@ -139,7 +139,16 @@ def consolidate(previous, supplementary, output, readme):
                '## 计分与检查', '', '```bash',
                "python3 -m unittest discover -s benchmark -p 'test_*.py'",
                "python3 -m unittest discover -s scripts -p 'test_build_support_v3.py'", '```', '']
-    readme.write_text('\n'.join(report), encoding='utf-8')
+    # 只更新实验结果，保留创建背景等人工维护的章节。
+    existing = readme.read_text(encoding='utf-8')
+    heading = '## 十组实验结果\n'
+    start = existing.index(heading)
+    end = existing.index('\n## ', start + len(heading))
+    generated = '\n'.join(report)
+    generated_start = generated.index(heading)
+    generated_end = generated.index('\n## 文件入口', generated_start)
+    readme.write_text(existing[:start] + generated[generated_start:generated_end] + existing[end:],
+                      encoding='utf-8')
     print(json.dumps({'groups': len(summaries), 'answers': len(metrics),
                       'scored': 599, 'product_scores': len(primary) * len(summaries)}, ensure_ascii=False))
 
