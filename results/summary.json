@@ -15,7 +15,8 @@
         "score_statuses": {
           "preview_scored": 59,
           "invalid_verdict": 1
-        }
+        },
+        "mean_wall_seconds": 41.39
       },
       "product12": {
         "answers": 12,
@@ -47,7 +48,8 @@
         "send_as_is": 8,
         "score_statuses": {
           "preview_scored": 60
-        }
+        },
+        "mean_wall_seconds": 20.94
       },
       "product12": {
         "answers": 12,
@@ -79,7 +81,8 @@
         "send_as_is": 31,
         "score_statuses": {
           "preview_scored": 60
-        }
+        },
+        "mean_wall_seconds": 43.54
       },
       "product12": {
         "answers": 12,
@@ -111,7 +114,8 @@
         "send_as_is": 29,
         "score_statuses": {
           "preview_scored": 60
-        }
+        },
+        "mean_wall_seconds": 18.67
       },
       "product12": {
         "answers": 12,
@@ -143,7 +147,8 @@
         "send_as_is": 35,
         "score_statuses": {
           "preview_scored": 60
-        }
+        },
+        "mean_wall_seconds": 36.76
       },
       "product12": {
         "answers": 12,
@@ -175,7 +180,8 @@
         "send_as_is": 33,
         "score_statuses": {
           "preview_scored": 60
-        }
+        },
+        "mean_wall_seconds": 17.26
       },
       "product12": {
         "answers": 12,
@@ -207,7 +213,8 @@
         "send_as_is": 13,
         "score_statuses": {
           "preview_scored": 60
-        }
+        },
+        "mean_wall_seconds": 36.8
       },
       "product12": {
         "answers": 12,
@@ -239,7 +246,8 @@
         "send_as_is": 18,
         "score_statuses": {
           "preview_scored": 60
-        }
+        },
+        "mean_wall_seconds": 20.73
       },
       "product12": {
         "answers": 12,
@@ -271,7 +279,8 @@
         "send_as_is": 34,
         "score_statuses": {
           "preview_scored": 60
-        }
+        },
+        "mean_wall_seconds": 36.46
       },
       "product12": {
         "answers": 12,
@@ -303,7 +312,8 @@
         "send_as_is": 35,
         "score_statuses": {
           "preview_scored": 60
-        }
+        },
+        "mean_wall_seconds": 20.8
       },
       "product12": {
         "answers": 12,

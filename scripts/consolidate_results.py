@@ -72,6 +72,8 @@ def consolidate(previous, supplementary, output, readme):
             metrics.append(metric)
         summaries[ident] = {'all60': summarize(entries),
                             'product12': summarize([e for e in entries if e['item_id'] in primary])}
+        summaries[ident]['all60']['mean_wall_seconds'] = round(
+            statistics.mean(entry['metrics']['wall_seconds'] for entry in entries), 2)
         parameters = manifests[batch]
         configurations[ident] = {
             'profile': profile, 'knowledge': knowledge, 'backend': backend,
@@ -116,16 +118,19 @@ def consolidate(previous, supplementary, output, readme):
               '## 十组实验结果', '',
               '之前的四组实验与补充的六组实验合并如下。每组60题，共600份作答、599份数值评分。'
               '产品12题是60题中的固定子集；之前四组的产品子集分数由已有评分重新汇总，未重新作答。', '',
-              '| system prompt＋总 Skill | 知识库 | Wiki：全部60题 | Utopia：全部60题 | Wiki：产品12题 | Utopia：产品12题 |',
-              '|---|---|---:|---:|---:|---:|']
+              '| system prompt＋总 Skill | 知识库 | Wiki：全部60题 | Utopia：全部60题 | Wiki：平均用时（秒） | Utopia：平均用时（秒） | Wiki：产品12题 | Utopia：产品12题 |',
+              '|---|---|---:|---:|---:|---:|---:|---:|']
     for left, right in zip(GROUPS[::2], GROUPS[1::2]):
         cells = []
         for scope, ident in [('all60', left[0]), ('all60', right[0]),
                              ('product12', left[0]), ('product12', right[0])]:
             cells.append(f'[{summaries[ident][scope]["mean_score"]:.2f}](results/answers/{ident}.md)')
+        cells[2:2] = [f'{summaries[ident]["all60"]["mean_wall_seconds"]:.2f}'
+                      for ident in (left[0], right[0])]
         report.append('| ' + left[1] + ' | ' + left[2] + ' | ' + ' | '.join(cells) + ' |')
     report += ['', '分数范围为0—100，点击分数可查看该组完整回答。配置 A 的 Wiki 全题均分采用59份数值评分；'
                '其他九组采用60份。产品子集每组都有12份数值评分。', '',
+               '平均用时按每组全部60题的作答运行耗时计算，包含检索和生成，不包含评分；未形成答复的题也计入平均值。', '',
                '配置含义：', '',
                '- **A**：旧system prompt和旧总Skill。',
                '- **B**：结合有价值的业务数据更新后的客服支持system prompt和总Skill。',

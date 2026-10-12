@@ -52,15 +52,17 @@
 
 之前的四组实验与补充的六组实验合并如下。每组60题，共600份作答、599份数值评分。产品12题是60题中的固定子集；之前四组的产品子集分数由已有评分重新汇总，未重新作答。
 
-| system prompt＋总 Skill | 知识库 | Wiki：全部60题 | Utopia：全部60题 | Wiki：产品12题 | Utopia：产品12题 |
-|---|---|---:|---:|---:|---:|
-| A | 旧 | [53.53](results/answers/original_old_wiki.md) | [65.77](results/answers/original_old_utopia.md) | [47.50](results/answers/original_old_wiki.md) | [63.58](results/answers/original_old_utopia.md) |
-| B | 旧 | [84.27](results/answers/user_v3_old_wiki.md) | [86.60](results/answers/user_v3_old_utopia.md) | [74.58](results/answers/user_v3_old_wiki.md) | [78.00](results/answers/user_v3_old_utopia.md) |
-| B | 新 | [88.48](results/answers/user_v3_new_wiki.md) | [92.03](results/answers/user_v3_new_utopia.md) | [80.00](results/answers/user_v3_new_wiki.md) | [86.33](results/answers/user_v3_new_utopia.md) |
-| C | 旧 | [51.15](results/answers/senior_old_wiki.md) | [59.17](results/answers/senior_old_utopia.md) | [58.00](results/answers/senior_old_wiki.md) | [48.83](results/answers/senior_old_utopia.md) |
-| C | 新 | [83.37](results/answers/senior_new_wiki.md) | [80.78](results/answers/senior_new_utopia.md) | [56.25](results/answers/senior_new_wiki.md) | [47.00](results/answers/senior_new_utopia.md) |
+| system prompt＋总 Skill | 知识库 | Wiki：全部60题 | Utopia：全部60题 | Wiki：平均用时（秒） | Utopia：平均用时（秒） | Wiki：产品12题 | Utopia：产品12题 |
+|---|---|---:|---:|---:|---:|---:|---:|
+| A | 旧 | [53.53](results/answers/original_old_wiki.md) | [65.77](results/answers/original_old_utopia.md) | 41.39 | 20.94 | [47.50](results/answers/original_old_wiki.md) | [63.58](results/answers/original_old_utopia.md) |
+| B | 旧 | [84.27](results/answers/user_v3_old_wiki.md) | [86.60](results/answers/user_v3_old_utopia.md) | 43.54 | 18.67 | [74.58](results/answers/user_v3_old_wiki.md) | [78.00](results/answers/user_v3_old_utopia.md) |
+| B | 新 | [88.48](results/answers/user_v3_new_wiki.md) | [92.03](results/answers/user_v3_new_utopia.md) | 36.76 | 17.26 | [80.00](results/answers/user_v3_new_wiki.md) | [86.33](results/answers/user_v3_new_utopia.md) |
+| C | 旧 | [51.15](results/answers/senior_old_wiki.md) | [59.17](results/answers/senior_old_utopia.md) | 36.80 | 20.73 | [58.00](results/answers/senior_old_wiki.md) | [48.83](results/answers/senior_old_utopia.md) |
+| C | 新 | [83.37](results/answers/senior_new_wiki.md) | [80.78](results/answers/senior_new_utopia.md) | 36.46 | 20.80 | [56.25](results/answers/senior_new_wiki.md) | [47.00](results/answers/senior_new_utopia.md) |
 
 分数范围为0—100，点击分数可查看该组完整回答。配置 A 的 Wiki 全题均分采用59份数值评分；其他九组采用60份。产品子集每组都有12份数值评分。
+
+平均用时按每组全部60题的作答运行耗时计算，包含检索和生成，不包含评分；未形成答复的题也计入平均值。
 
 配置含义：
 
