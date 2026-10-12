@@ -1,0 +1,109 @@
+{
+  "case_id": "hb-real-001",
+  "matched_v3_item_id": "hb-v3-001",
+  "evaluation_date": "2026-10-12",
+  "evaluation_type": "same_saved_answer_regraded",
+  "answer_regenerated": false,
+  "judge_model": "doubao-seed-2-1-lite",
+  "knowledge_version": "old",
+  "old_scores_supplied_to_grader": false,
+  "business_points_changed": false,
+  "legacy_demonstration": {
+    "score": 100,
+    "method": "旧Rubric＋临时演示公式"
+  },
+  "score": {
+    "status": "preview_scored",
+    "formal_eligible": false,
+    "rubric_version": "support-assistant-v3.0-candidate",
+    "dimensions": {
+      "business_points": 9.0,
+      "turn_decision": 10.0,
+      "customer_load": 0.0,
+      "natural_contextual_reply": 10.0,
+      "grounding": 10.0,
+      "internal_support": 20.0
+    },
+    "raw_score": 59.0,
+    "caps": {
+      "severe_customer_load": 59
+    },
+    "score": 59.0,
+    "customer_sendability": "rewrite",
+    "validation": "structure_and_catalog_binding_only",
+    "semantic_evidence_review": "required_separately"
+  },
+  "answer": "## 建议回复（可直接发给客户）\n\n您好，先别着急，我们一起看一下～ 设备换了个地方使用，通常相当于换到了一个新的 Wi‑Fi 网络环境，这种情况大多需要把设备重新联网才能恢复，不一定是机器坏了，我们先逐步排查。\n\n为了给您**准确**的步骤（不同型号的指示灯表现和重新联网方式不一样），麻烦您先告诉我三点：\n1. 您用的是哪一款看护器？（例如四代 / 三代 / 二代焕新版 / 二代 PLUS，或包装、APP 里显示的型号）\n2. 现在指示灯具体是什么状态：红灯闪烁 / 红灯常亮 / 蓝灯闪烁 / 完全不亮？\n3. 这台设备是**第一次添加**，还是**原来已绑定、这次换了地方才连不上**？\n\n在您回复之前，可以先做几项**通用检查**（不涉及重置，放心操作）：\n- 使用原装电源适配器供电，确认插头插紧、供电正常；\n- 确认新位置的 Wi‑Fi 名称和密码正确，且该 Wi‑Fi 能正常上网；\n- 把看护器尽量靠近路由器，减少隔墙遮挡，并远离金属物、微波炉等干扰源；\n- 如果路由器是光猫自带路由或 AP 面板，可能相对不稳定；\n- 手机蓝牙打开，APP 更新到最新版，并用主账号操作。\n\n特别提醒两点：\n- 无论后续用哪种方式重新联网，请**先不要删除 APP 里的设备、不要解绑、不要更换绑定账号**，以免影响已有的视频 / 图片记录；\n- 看护器只是辅助看护设备，这段时间如果您无法远程查看，请务必安排家人就近看护宝宝。\n\n如果插电后指示灯**完全没有反应**，请先换回原装电源适配器或原装 Type‑C 电源线再试一次，排查供电异常；若用原装供电仍无反应、也无法重置，我们再帮您转官方售后检测。您把上面三点信息发给我，我马上给您对应的重新联网步骤～\n\n## 依据\n\n- **先区分使用场景、并先追问型号与指示灯后再给具体步骤**：`20_intents/02_connection_pairing.md > 4. 处理流程`（第 1、2 条：区分首次添加/配网失败/已绑定后离线/换 Wi‑Fi；检查 App、蓝牙、Wi‑Fi、指示灯）与 `> 8. 需要追问的情况`（是首次添加还是已绑定后离线；指示灯是红灯闪/蓝灯闪/红灯常亮/完全不亮；是否改过 Wi‑Fi 名称密码；是否主账号）。\n- **不能识别具体型号应先追问，不套用某一型号参数**：`retrieval_rules.md > 产品识别`；`10_products/monitor/monitor_overview.md > 型号范围`；`aliases.yaml`（口语化型号归一）。\n- **\"换了地方用\"属于更换 Wi‑Fi / 换网场景，换网需重新配网（RESET 10 秒 → 红灯闪烁 → APP 右上角\"+\"生成二维码）**：`20_intents/02_connection_pairing.md > 4. 处理流程`（第 4 条）、`> 6. 常见问答（换 Wi‑Fi 后设备离线怎么办）`。（该重置流程须待型号确认后再发送给客户。）\n- **通用检查项（原装适配器、Wi‑Fi 名密、能否上网、距离隔墙、光猫自带路由/AP 面板、蓝牙）**：`20_intents/02_connection_pairing.md > 4. 处理流程`（第 2、3 条）、`> 6. 常见问答（连接设备后不出画面怎么办）`、`> 7. 复杂场景处理（蓝灯闪 + AP 面板环境）`。\n- **离线 / 换网时必须提醒不要删除设备、不要更换绑定账号（数据风险）**：`00_global/customer_service_boundaries.md > 必须提醒风险的操作`；`00_global/answer_style_and_escalation.md > 数据风险提醒`；`20_intents/02_connection_pairing.md > 4. 处理流程`（第 5 条）。\n- **设备离线不等于设备坏；用户提\"网络/服务器\"时不要直接归因**：`20_intents/02_connection_pairing.md > 5. 标准回答规则`（设备离线不等于设备坏；用户说服务器问题时不要直接归因服务器）。\n- **指示灯状态口径**：`20_intents/02_connection_pairing.md > 5. 标准回答规则`（蓝灯闪烁可先重启路由器或重置后重新绑定；红灯常亮可断电后重新供电）。\n- **知识缺口（须如实说明）**：当前有效知识库（`00_global`、`10_products`、`20_intents`）**未单独定义\"红灯不会闪烁 / 红灯不亮\"的含义**，仅在换网流程中说明重置后会出现\"红灯闪烁\"。因此不能对\"红灯不闪\"下确定结论，只能向客户确认实际指示灯状态。相关\"红灯闪烁=开机成功\"等描述仅存在于 `_archive/` 历史文档，按 `retrieval_rules.md` 与 `README.md > 禁止事项` 不得作为依据引用。\n- **需转人工 / 官方售后的条件**：`20_intents/02_connection_pairing.md > 9. 需要转人工的情况`（更换电源线/适配器后仍完全无反应；供电正常但无法重置或无法启动；基础配网排查后仍无法恢复）；`00_global/customer_service_boundaries.md > 升级人工`；`20_intents/05_service_safety.md > 9. 需要转人工的情况`。\n- **售后联系方式**：`20_intents/05_service_safety.md > 6. 常见问答（售后电话是多少）`（全国服务热线 400-9600-323，官网 www.haimababi.com）。\n- **看护器不能替代成人看护 / 医疗判断**：`00_global/customer_service_boundaries.md > 医疗与安全边界`；`retrieval_rules.md > 安全与医疗边界`。\n- 备注：此前客服\"重新联网需要重置、不要解绑/删除设备/换账号\"的口径与知识库一致，无需更正。\n\n## 下一步\n\n1. **本条回复尚不自包含**：在客户补回\"型号、指示灯具体状态、是否首次添加/换地方后连不上\"三项信息前，不能给出确定结论或重置步骤，请先按建议回复发出追问。\n2. 客户回复后，用 `aliases.yaml` 归一型号，再按对应场景处理：\n   - 若确认为**更换 Wi‑Fi / 换了地方**场景：依 `20_intents/02_connection_pairing.md > 4/6` 提供换网步骤（RESET 10 秒 → 红灯闪烁 → APP 右上角\"+\"用新 Wi‑Fi 生成二维码），并再次强调不要删除设备、不要更换绑定账号。\n   - 若指示灯为**红灯常亮**：按 `20_intents/02_connection_pairing.md > 5` 先断电后重新供电。\n   - 若指示灯为**蓝灯闪烁**：按同文档先重启路由器，或重置后重新绑定。\n3. **触发升级时转官方渠道**：若更换原装电源适配器/电源线后仍完全无反应、供电正常但无法重置或启动、或基础配网排查后仍无法恢复（`20_intents/02_connection_pairing.md > 9`；`00_global/customer_service_boundaries.md > 升级人工`），转官方售后 / 官方店铺客服，联系方式：全国服务热线 400-9600-323，官网 www.haimababi.com（`20_intents/05_service_safety.md > 6`）。\n4. 全程提醒：如客户在此期间的宝宝看护存在\"无法远程查看\"的时段，务必提示安排人工看护，看护器不能替代成人看护（`00_global/customer_service_boundaries.md > 医疗与安全边界`）。",
+  "judgment_summary": {
+    "needs_review": false,
+    "review_reasons": [],
+    "customer_sendability": "rewrite",
+    "summary": "答案整体方向正确，内部支持较完整，但客户草稿将换地点直接断言为换Wi-Fi，且一次性塞入过多追问和排查项，客户负担过重，需要精简聚焦到确认Wi-Fi是否变化的核心问题后再发送。",
+    "business_points": {
+      "customer_current": {
+        "rating": "poor",
+        "reason": "客户草稿将换地点直接断言为换到新Wi-Fi环境，未优先确认Wi-Fi是否也发生变化，且一次性塞入了3项追问、5项通用检查、2项风险提醒和供电排查分支，违反了本轮不一次塞入全部配网步骤的要求。",
+        "missing": "应先聚焦确认换地点后Wi-Fi名称/密码是否变化，再根据结果分支推进，避免一次性抛出多组独立排查项。"
+      },
+      "staff_current": {
+        "rating": "adequate",
+        "reason": "内部下一步明确了根据客户回复的不同场景（换Wi-Fi、红灯常亮、蓝灯闪烁）选择对应处理分支，也保留了绑定保护提醒和升级条件，但未将确认Wi-Fi是否变化作为首要核验项，且提前罗列了多组后续分支，对当前客服的聚焦引导不足。",
+        "missing": "应明确将确认Wi-Fi是否变化作为当前首要核验项，再根据结果决定是否进入型号、灯态收集和换网操作。"
+      },
+      "state_and_conditions": {
+        "rating": "adequate",
+        "reason": "内部依据中明确了当前知识库未定义红灯不闪的含义，不能对红灯不闪下确定结论，也标注了重置流程需待型号确认后再发送，保留了未知状态；但客户草稿中将换地点直接等同于换Wi-Fi，存在将未确认条件当成事实的问题。",
+        "missing": "客户侧不应将换地点断言为换Wi-Fi，需明确该条件尚未确认。"
+      }
+    },
+    "criteria": {
+      "turn_decision": {
+        "rating": "adequate",
+        "reason": "主动作方向正确，承接了换地点的场景，也保留了后续反馈和核验节点，但未优先聚焦确认Wi-Fi是否变化，提前塞入了多组后续排查项，存在次要顺序缺漏。",
+        "missing": "应将确认Wi-Fi是否变化作为当前首要动作，再根据结果推进后续步骤。"
+      },
+      "customer_load": {
+        "rating": "poor",
+        "reason": "客户草稿同时要求客户回答3个问题、完成5项通用检查、接收2项风险提醒和供电排查分支，堆叠了多项独立追问和排查阶段，造成明显选择负担。",
+        "missing": "应聚焦一个关键问题（Wi-Fi是否变化），减少同时抛出的独立排查项数量。"
+      },
+      "natural_contextual_reply": {
+        "rating": "excellent",
+        "reason": "客户草稿自然回应了客户连不上网的焦虑，语气平和，没有责备客户，也没有使用生硬官腔，符合自然表达要求。",
+        "missing": ""
+      },
+      "grounding": {
+        "rating": "excellent",
+        "reason": "关键产品和政策事实均有对应知识库来源，对知识库未覆盖的红灯不闪含义明确保留未知，没有编造业务状态，也给出了合理的核验路径。",
+        "missing": ""
+      },
+      "internal_support": {
+        "rating": "excellent",
+        "reason": "内部下一步明确了当前需要客户补充的信息、不同回复结果对应的处理分支、升级触发条件和联系方式，交接建议具体可执行，也保留了绑定保护和人工看护提醒。",
+        "missing": ""
+      }
+    },
+    "controls": {
+      "no_answer": {
+        "triggered": false,
+        "reason": "存在完整的客户草稿和客服支持内容，不属于无实质回答的情况。"
+      },
+      "wrong_task": {
+        "triggered": false,
+        "reason": "处理对象是当前客服求助的摄像头换地点连不上的配网问题，没有错位。"
+      },
+      "fabricated_business_state_or_action": {
+        "triggered": false,
+        "reason": "没有声称已查询到订单、设备状态或已执行退款、提交工单等操作，所有待执行动作均为建议客服后续核验，不属于编造业务状态。"
+      },
+      "decisive_business_error": {
+        "triggered": false,
+        "reason": "客户草稿中换地点等同于换Wi-Fi的表述属于未确认条件的不当断言，但未造成核心处理方向错误，也没有给出错误的重置或解绑操作，不构成决定性业务错误。"
+      },
+      "urgent_safety_failure": {
+        "triggered": false,
+        "reason": "没有明确的即时安全风险，也没有要求危险操作或省略必要保护，绑定保护和人工看护提醒均已覆盖。"
+      }
+    }
+  }
+}
