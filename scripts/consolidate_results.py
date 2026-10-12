@@ -7,16 +7,16 @@ import statistics
 
 
 GROUPS = [
-    ('original_old_wiki', '旧版', '旧', 'LLM-Wiki', 'supplementary', 'O_W'),
-    ('original_old_utopia', '旧版', '旧', 'Utopia', 'supplementary', 'O_U'),
-    ('user_v3_old_wiki', '我的 v3', '旧', 'LLM-Wiki', 'previous', 'A'),
-    ('user_v3_old_utopia', '我的 v3', '旧', 'Utopia', 'previous', 'C'),
-    ('user_v3_new_wiki', '我的 v3', '新', 'LLM-Wiki', 'previous', 'B'),
-    ('user_v3_new_utopia', '我的 v3', '新', 'Utopia', 'previous', 'D'),
-    ('senior_old_wiki', '师兄版', '旧', 'LLM-Wiki', 'supplementary', 'S_O_W'),
-    ('senior_old_utopia', '师兄版', '旧', 'Utopia', 'supplementary', 'S_O_U'),
-    ('senior_new_wiki', '师兄版', '新', 'LLM-Wiki', 'supplementary', 'S_N_W'),
-    ('senior_new_utopia', '师兄版', '新', 'Utopia', 'supplementary', 'S_N_U'),
+    ('original_old_wiki', 'A', '旧', 'LLM-Wiki', 'supplementary', 'O_W'),
+    ('original_old_utopia', 'A', '旧', 'Utopia', 'supplementary', 'O_U'),
+    ('user_v3_old_wiki', 'B', '旧', 'LLM-Wiki', 'previous', 'A'),
+    ('user_v3_old_utopia', 'B', '旧', 'Utopia', 'previous', 'C'),
+    ('user_v3_new_wiki', 'B', '新', 'LLM-Wiki', 'previous', 'B'),
+    ('user_v3_new_utopia', 'B', '新', 'Utopia', 'previous', 'D'),
+    ('senior_old_wiki', 'C', '旧', 'LLM-Wiki', 'supplementary', 'S_O_W'),
+    ('senior_old_utopia', 'C', '旧', 'Utopia', 'supplementary', 'S_O_U'),
+    ('senior_new_wiki', 'C', '新', 'LLM-Wiki', 'supplementary', 'S_N_W'),
+    ('senior_new_utopia', 'C', '新', 'Utopia', 'supplementary', 'S_N_U'),
 ]
 
 
@@ -124,21 +124,21 @@ def consolidate(previous, supplementary, output, readme):
                              ('product12', left[0]), ('product12', right[0])]:
             cells.append(f'[{summaries[ident][scope]["mean_score"]:.2f}](results/answers/{ident}.md)')
         report.append('| ' + left[1] + ' | ' + left[2] + ' | ' + ' | '.join(cells) + ' |')
-    report += ['', '分数范围为0—100，点击分数可查看该组完整回答。旧版 Wiki 的全题均分采用59份数值评分；'
+    report += ['', '分数范围为0—100，点击分数可查看该组完整回答。配置 A 的 Wiki 全题均分采用59份数值评分；'
                '其他九组采用60份。产品子集每组都有12份数值评分。', '',
-               '配置含义：旧版使用旧system prompt和旧总Skill；“我的 v3”使用更新后的客服支持system prompt和总Skill；'
-               '师兄版使用产品咨询system prompt和总Skill。旧、新知识库分别包含25、29份文件。', '',
+               '配置含义：', '',
+               '- **A**：旧system prompt和旧总Skill。',
+               '- **B**：结合有价值的业务数据更新后的客服支持system prompt和总Skill。',
+               '- **C**：针对产品咨询场景更新后的system prompt和总Skill。', '',
+               '旧、新知识库分别包含25、29份文件。', '',
                '## 文件入口', '',
                '| 内容 | 位置 |', '|---|---|',
                '| 当前60题 benchmark | [说明](benchmark/README.md) · [题目构成](benchmark/manifest.json) |',
                '| 当前评分规则 | [评分说明](benchmark/评分说明.md) · [Rubric](benchmark/rubric.json) |',
-               '| 我的 v3 配置 | [system prompt](config/system_prompt.txt) · [总 Skill](config/SKILL.md) · [评分 prompt](config/grader_prompt.txt) |',
+               '| 配置 B | [system prompt](config/system_prompt.txt) · [总 Skill](config/SKILL.md) · [评分 prompt](config/grader_prompt.txt) |',
                '| 十组详细指标 | [逐题指标](results/metrics.csv) · [分组汇总](results/summary.json) |',
                '| 实验参数与用量 | [配置](results/configurations.json) · [调用用量](results/usage.json) |',
-               '| 4,361条业务对话数据 | [数据说明](data/processed_dialogues/README.md) |', '',
-               '## 计分与检查', '', '```bash',
-               "python3 -m unittest discover -s benchmark -p 'test_*.py'",
-               "python3 -m unittest discover -s scripts -p 'test_build_support_v3.py'", '```', '']
+               '| 4,361条业务对话数据 | [数据说明](data/processed_dialogues/README.md) |', '']
     # 只更新实验结果，保留创建背景等人工维护的章节。
     existing = readme.read_text(encoding='utf-8')
     heading = '## 十组实验结果\n'
