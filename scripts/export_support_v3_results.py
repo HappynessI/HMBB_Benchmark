@@ -138,8 +138,8 @@ def export(root, report_path, contracts_path, output, alias_source=None, profile
             if field in original_manifest:
                 manifest[field] = original_manifest[field]
     else:
-        manifest.update(system='../../config/B/system_prompt.txt',
-                        skill='../../config/B/SKILL.md')
+        manifest.update(system='../../config/B/experiment/system_prompt.txt',
+                        skill='../../config/B/experiment/SKILL.md')
     write(output / 'experiment_manifest.json', manifest)
     write(output / 'completion.json', completion)
     for name in ('paired_comparisons', 'wire_usage'):

@@ -103,8 +103,13 @@ B 接新库的产品12题中，两种后端均生成了12份答复，Utopia没�
 | 新知识库（29份文件） | [知识库入口](knowledge_base/README.md) · [文件清单](knowledge_base/kb_manifest.yaml) |
 | 当前评分规则 | [评分说明](benchmark/评分说明.md) · [Rubric](benchmark/rubric.json) · [评分 prompt](config/grader_prompt.txt) |
 | 配置 A | [system prompt](config/A/system_prompt.txt) · [总 Skill](config/A/SKILL.md) |
-| 配置 B | [system prompt](config/B/system_prompt.txt) · [总 Skill](config/B/SKILL.md) |
+| 配置 B（实验原版） | [system prompt](config/B/experiment/system_prompt.txt) · [总 Skill](config/B/experiment/SKILL.md) |
+| 配置 B（Utopia部署版） | [system prompt](config/B/system_prompt.txt) · [总 Skill](config/B/SKILL.md) |
 | 配置 C | [system prompt](config/C/system_prompt.txt) · [总 Skill](config/C/SKILL.md) |
 | 十组详细指标 | [逐题指标](results/metrics.csv) · [分组汇总](results/summary.json) |
 | 实验参数与用量 | [配置](results/configurations.json) · [调用用量](results/usage.json) |
 | 4,361条业务对话数据 | [数据说明](data/processed_dialogues/README.md) |
+
+十组实验中的B组使用实验原版配置。现行B版面向Utopia部署：人工客服提供会话，Agent通过Hermes已配置的只读Utopia工具检索知识并返回建议，人工客服确认、发送和执行。仓库中的知识库文件用于导入和查看资料来源。
+
+部署现行B版时，在Hermes的 `knowledge` 配置中启用 `provider: utopia`，并设置Utopia的MCP地址与只读访问令牌。Skill中的资料路径用于标识Utopia来源，不要求挂载本地知识库目录。
