@@ -1,0 +1,111 @@
+version: 1
+last_updated: 2026-07-06
+source_level: user_provided_comparison_table
+note: 原价和功能对比来自用户补充的客服对比资料，不代表实时售价或实时活动权益。
+
+products:
+  hb_monitor_4:
+    canonical_name: 海马爸比宝宝看护器4代
+    positioning: 隐私・画质全能王
+    appearance: 四代
+    color: 蓝/元气蓝
+    original_price: "¥977"
+    image_quality: "4K 画质 / 800 万像素"
+    network: 大户型专用高灵敏度 WiFi 模组
+    chipset: "4 核 A53 / CPU 高速芯片"
+    compute_power: "3T 算力独立 NPU"
+    image_technology_generation: 第 6 代
+    privacy_protection_mode: true
+    adult_one_click_invisible: true
+    baby_soothing: true
+    three_color_night_light: true
+    speaker_audio_effect: true
+    face_monitoring: true
+    cry_detection: true
+    virtual_fence: true
+    temperature_humidity_detection: true
+    time_album: true
+    sleep_report: true
+    body_temperature_monitoring: true
+    spit_up_monitoring: true
+    quilt_cover_monitoring: true
+
+  hb_monitor_2_refresh:
+    canonical_name: 海马爸比宝宝看护器2代焕新版
+    positioning: 性价比之王
+    appearance: 二代焕新版
+    color: 元气蓝、活力粉
+    original_price: "¥719起"
+    image_quality: "3K 画质 / 500 万像素"
+    network: 家用 WiFi 模组
+    chipset: Mips 双核
+    compute_power: "2T"
+    image_technology_generation: 第 4 代
+    privacy_protection_mode: false
+    adult_one_click_invisible: false
+    baby_soothing: false
+    three_color_night_light: false
+    speaker_audio_effect: false
+    face_monitoring: true
+    cry_detection: true
+    virtual_fence: true
+    temperature_humidity_detection: true
+    time_album: true
+    sleep_report: true
+    body_temperature_monitoring: false
+    spit_up_monitoring: false
+    quilt_cover_monitoring: false
+
+  hb_monitor_2_plus:
+    canonical_name: 海马爸比宝宝看护器二代 PLUS
+    positioning: 4K 性价比之选
+    appearance: 二代 PLUS
+    color: 皓日黄
+    original_price: "¥859起"
+    image_quality: "4K 画质 / 800 万像素"
+    network: 大户型专用高灵敏度 WiFi 模组
+    chipset: Arm 双核
+    compute_power: "2T"
+    image_technology_generation: 第 4 代
+    privacy_protection_mode: false
+    adult_one_click_invisible: false
+    baby_soothing: false
+    three_color_night_light: false
+    speaker_audio_effect: false
+    face_monitoring: true
+    cry_detection: true
+    virtual_fence: true
+    temperature_humidity_detection: true
+    time_album: true
+    sleep_report: true
+    body_temperature_monitoring: false
+    spit_up_monitoring: false
+    quilt_cover_monitoring: false
+
+  hb_monitor_3:
+    canonical_name: 海马爸比宝宝看护器三代旗舰版
+    positioning: 科技力之王
+    appearance: 三代旗舰版
+    color: 黄/曙光黄
+    original_price: "¥1869"
+    image_quality: "3K 画质 / 500 万像素"
+    network: 大户型专用高灵敏度 WiFi 模组
+    chipset: Arm 双核
+    compute_power: "2.5T"
+    image_technology_generation: 第 5 代
+    privacy_protection_mode: false
+    adult_one_click_invisible: false
+    baby_soothing: false
+    three_color_night_light: false
+    speaker_audio_effect: false
+    face_monitoring: true
+    cry_detection: true
+    virtual_fence: true
+    temperature_humidity_detection: true
+    time_album: true
+    sleep_report: true
+    body_temperature_monitoring: false
+    spit_up_monitoring: true
+    quilt_cover_monitoring: true
+    resolution: "2880 x 1620"
+    product_size: "137 x 88 x 108 mm"

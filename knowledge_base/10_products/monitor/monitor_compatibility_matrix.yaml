@@ -1,0 +1,47 @@
+version: 1
+last_updated: 2026-07-06
+source_level: curated_from_product_docs
+note: 配件适配范围需要按购买页具体变体确认；知识库未写明时不要推断跨型号适配。
+
+accessories:
+  wireless_cry_alert_reminder:
+    product_id: hb_product_008
+    canonical_name: 海马爸比无线哭声报警提醒器
+    doc_path: 10_products/ecommerce/monitor_accessories.md
+    compatible_with:
+      - hb_monitor_2_refresh
+      - hb_monitor_2_plus
+      - hb_monitor_3
+      - hb_monitor_4
+    confidence: needs_page_confirmation
+    note: 作为看护提醒配件使用，具体兼容范围以商品详情页为准。
+
+  cloud_wall_mount:
+    product_id: hb_product_010
+    canonical_name: 海马爸比云朵墙贴
+    doc_path: 10_products/ecommerce/monitor_accessories.md
+    compatible_with:
+      - hb_monitor_2_refresh
+    confidence: variant_required
+    note: 资料中以二代专用为主；部分 Plus/三代适配需以购买页变体确认为准。
+
+  floor_stand:
+    product_id: hb_product_011
+    canonical_name: 海马爸比落地支架
+    doc_path: 10_products/ecommerce/monitor_accessories.md
+    compatible_with:
+      - hb_monitor_2_refresh
+      - hb_monitor_pro
+      - hb_monitor_4
+    confidence: variant_required
+    note: 不同型号需购买对应专用款，不要承诺通用。
+
+  angel_bedside_stand:
+    product_id: hb_product_012
+    canonical_name: 海马爸比天使床头支架
+    doc_path: 10_products/ecommerce/monitor_accessories.md
+    compatible_with:
+      - hb_monitor_2_refresh
+      - hb_monitor_pro
+    confidence: variant_required
+    note: 床头夹式安装，资料中列出二代专用和 Pro 专用。

@@ -97,7 +97,9 @@ B 接新库的产品12题中，两种后端均生成了12份答复，Utopia没�
 
 | 内容 | 位置 |
 |---|---|
-| 当前60题 benchmark | [说明](benchmark/README.md) · [题目构成](benchmark/manifest.json) |
+| 当前60题 benchmark | [题目与逐题标准（展开查看）](benchmark/题目与标准.md) · [说明](benchmark/README.md) · [题目构成](benchmark/manifest.json) |
+| 题集数据文件 | [作答输入](benchmark/answering/items.jsonl) · [逐题标准](benchmark/grading/contracts.jsonl) · [来源与划分](benchmark/provenance.jsonl) |
+| 新知识库（29份文件） | [知识库入口](knowledge_base/README.md) · [文件清单](knowledge_base/kb_manifest.yaml) |
 | 当前评分规则 | [评分说明](benchmark/评分说明.md) · [Rubric](benchmark/rubric.json) |
 | 配置 B | [system prompt](config/system_prompt.txt) · [总 Skill](config/SKILL.md) · [评分 prompt](config/grader_prompt.txt) |
 | 十组详细指标 | [逐题指标](results/metrics.csv) · [分组汇总](results/summary.json) |

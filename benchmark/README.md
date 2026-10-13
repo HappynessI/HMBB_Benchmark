@@ -16,8 +16,12 @@
 
 ## 输入与评分数据
 
-- `answering/items.jsonl`：题号、会话输入和知识入口。
-- `grading/contracts.jsonl`：本轮目标、关键条件、允许动作、业务点、条件后续和禁止动作。
-- `provenance.jsonl`：来源记录、截取位置和可见消息。
+[题目与逐题标准（展开查看）](题目与标准.md)包含全部60题的完整作答输入和评分标准。
+
+- [answering/items.jsonl](answering/items.jsonl)：题号、会话输入和知识入口。
+- [grading/contracts.jsonl](grading/contracts.jsonl)：本轮目标、关键条件、允许动作、业务点、条件后续和禁止动作。
+- [provenance.jsonl](provenance.jsonl)：来源类型、数据划分、可见消息数量和截止位置。
+
+十组实验使用的新知识库位于 [knowledge_base/](../knowledge_base/README.md)，[文件清单](../knowledge_base/kb_manifest.yaml)列出全部29份有效文件。作答阶段读取题干和知识库，评分阶段再读取逐题标准。
 
 构建脚本为 [build_support_v3.py](../scripts/build_support_v3.py)，计分入口为 [score_support_v3.py](../scripts/score_support_v3.py)。
