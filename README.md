@@ -112,4 +112,4 @@ B 接新库的产品12题中，两种后端均生成了12份答复，Utopia没�
 
 十组实验中的B组使用实验原版配置。现行B版面向Utopia部署：人工客服提供会话，Agent通过Hermes已配置的只读Utopia工具检索知识并返回建议，人工客服确认、发送和执行。仓库中的知识库文件用于导入和查看资料来源。
 
-部署现行B版时，在Hermes的 `knowledge` 配置中启用 `provider: utopia`，并设置Utopia的MCP地址与只读访问令牌。Skill中的资料路径用于标识Utopia来源，不要求挂载本地知识库目录。
+部署现行B版时，在Hermes的 `knowledge` 配置中启用 `provider: utopia`，并设置Utopia的MCP地址与只读访问令牌。Agent在问答时通过Utopia检索已导入的知识资料。
