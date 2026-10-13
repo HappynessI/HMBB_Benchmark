@@ -139,8 +139,10 @@ def consolidate(previous, supplementary, output, readme):
                '## 文件入口', '',
                '| 内容 | 位置 |', '|---|---|',
                '| 当前60题 benchmark | [说明](benchmark/README.md) · [题目构成](benchmark/manifest.json) |',
-               '| 当前评分规则 | [评分说明](benchmark/评分说明.md) · [Rubric](benchmark/rubric.json) |',
-               '| 配置 B | [system prompt](config/system_prompt.txt) · [总 Skill](config/SKILL.md) · [评分 prompt](config/grader_prompt.txt) |',
+               '| 当前评分规则 | [评分说明](benchmark/评分说明.md) · [Rubric](benchmark/rubric.json) · [评分 prompt](config/grader_prompt.txt) |',
+               '| 配置 A | [system prompt](config/A/system_prompt.txt) · [总 Skill](config/A/SKILL.md) |',
+               '| 配置 B | [system prompt](config/B/system_prompt.txt) · [总 Skill](config/B/SKILL.md) |',
+               '| 配置 C | [system prompt](config/C/system_prompt.txt) · [总 Skill](config/C/SKILL.md) |',
                '| 十组详细指标 | [逐题指标](results/metrics.csv) · [分组汇总](results/summary.json) |',
                '| 实验参数与用量 | [配置](results/configurations.json) · [调用用量](results/usage.json) |',
                '| 4,361条业务对话数据 | [数据说明](data/processed_dialogues/README.md) |', '']

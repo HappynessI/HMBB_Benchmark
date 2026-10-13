@@ -130,7 +130,7 @@ def export(root, report_path, contracts_path, output, alias_source=None, profile
     if profile_comparison:
         manifest.update(profiles={'original': '旧system prompt＋旧总Skill',
                                   'senior': '师兄产品咨询system prompt＋总Skill'},
-                        profile_sources_public=False,
+                        profile_sources_public=True,
                         reference_public_results='../../README.md',
                         knowledge_recompiled=original_manifest['knowledge_recompiled'],
                         utopia_reuses_frozen_kbs=original_manifest['utopia_reuses_frozen_kbs'])
@@ -138,8 +138,8 @@ def export(root, report_path, contracts_path, output, alias_source=None, profile
             if field in original_manifest:
                 manifest[field] = original_manifest[field]
     else:
-        manifest.update(system='../../config/system_prompt.txt',
-                        skill='../../config/SKILL.md')
+        manifest.update(system='../../config/B/system_prompt.txt',
+                        skill='../../config/B/SKILL.md')
     write(output / 'experiment_manifest.json', manifest)
     write(output / 'completion.json', completion)
     for name in ('paired_comparisons', 'wire_usage'):
