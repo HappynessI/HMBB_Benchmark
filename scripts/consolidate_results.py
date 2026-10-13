@@ -141,7 +141,7 @@ def consolidate(previous, supplementary, output, readme):
                '| 当前60题 benchmark | [说明](benchmark/README.md) · [题目构成](benchmark/manifest.json) |',
                '| 当前评分规则 | [评分说明](benchmark/评分说明.md) · [Rubric](benchmark/rubric.json) · [评分 prompt](config/grader_prompt.txt) |',
                '| 配置 A | [system prompt](config/A/system_prompt.txt) · [总 Skill](config/A/SKILL.md) |',
-               '| 配置 B（实验原版） | [system prompt](config/B/experiment/system_prompt.txt) · [总 Skill](config/B/experiment/SKILL.md) |',
+               '| 配置 B（实验原版） | [system prompt](config/B/experiment/system_prompt.txt) · [总 Skill](config/B/experiment/skill.txt) |',
                '| 配置 B（Utopia部署版） | [system prompt](config/B/system_prompt.txt) · [总 Skill](config/B/SKILL.md) |',
                '| 配置 C | [system prompt](config/C/system_prompt.txt) · [总 Skill](config/C/SKILL.md) |',
                '| 十组详细指标 | [逐题指标](results/metrics.csv) · [分组汇总](results/summary.json) |',
