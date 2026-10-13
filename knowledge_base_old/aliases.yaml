@@ -1,0 +1,145 @@
+version: 1
+last_updated: 2026-07-06
+
+products:
+  hb_monitor_2_refresh:
+    canonical_name: 海马爸比宝宝看护器2代焕新版
+    doc_path: 10_products/monitor/models/hb_monitor_2_refresh.md
+    aliases:
+      - 二代
+      - 2代
+      - 二代焕新版
+      - 2代焕新版
+      - 焕新版
+      - 性价比之王
+      - 元气蓝看护器
+      - 活力粉看护器
+
+  hb_monitor_2_plus:
+    canonical_name: 海马爸比宝宝看护器二代 PLUS
+    doc_path: 10_products/monitor/models/hb_monitor_2_plus.md
+    aliases:
+      - 二代plus
+      - 二代 PLUS
+      - 2plus
+      - 2PLUS
+      - 4K超清款
+      - 4K 性价比
+      - 4K性价比
+      - 4K 性价比之选
+      - 皓日黄
+      - 黄色那个看护器
+
+  hb_monitor_3:
+    canonical_name: 海马爸比宝宝看护器三代
+    doc_path: 10_products/monitor/models/hb_monitor_3.md
+    aliases:
+      - 三代
+      - 3代
+      - SC-AI23
+      - 热成像款
+      - 航天级热成像芯片
+      - 低月龄看护器
+      - 三代旗舰版
+      - 科技力之王
+
+  hb_monitor_4:
+    canonical_name: 海马爸比宝宝看护器4代
+    doc_path: 10_products/monitor/models/hb_monitor_4.md
+    aliases:
+      - 四代
+      - 4代
+      - 4K旗舰
+      - 四代智尊版
+      - 智尊版
+      - 至尊版
+      - 小夜灯款
+      - 三色小夜灯
+      - 3色小夜灯
+      - 隐私画质全能王
+      - 隐私・画质全能王
+      - 会转动的看护器
+      - 跟随宝宝的看护器
+
+  hb_product_004:
+    canonical_name: 海马爸比魔法打印机便签打印纸4卷装
+    doc_path: 10_products/ecommerce/printer_and_paper.md
+    aliases:
+      - 便签打印纸
+      - 魔法打印机纸
+      - 打印纸4卷
+      - 4卷打印纸
+
+  hb_product_006:
+    canonical_name: 海马爸比AI魔法打印机PRO
+    doc_path: 10_products/ecommerce/printer_and_paper.md
+    aliases:
+      - 魔法打印机
+      - AI魔法打印机
+      - AI打印机
+      - 儿童打印机
+      - 打印机PRO
+
+  hb_product_009:
+    canonical_name: 海马爸比AI魔法打印机PRO高清语音款
+    doc_path: 10_products/ecommerce/printer_and_paper.md
+    aliases:
+      - 高清款打印机
+      - 语音高清款
+      - PRO高清款
+      - AI打印机高清款
+      - AI魔法打印机PRO高清款
+
+  hb_product_008:
+    canonical_name: 海马爸比无线哭声报警提醒器
+    doc_path: 10_products/ecommerce/monitor_accessories.md
+    aliases:
+      - 无线提醒器
+      - 提醒器
+      - 哭声报警提醒器
+      - 提醒灯
+
+  hb_product_010:
+    canonical_name: 海马爸比云朵墙贴
+    doc_path: 10_products/ecommerce/monitor_accessories.md
+    aliases:
+      - 云朵墙贴
+      - 云朵贴
+      - 墙贴支架
+      - 摄像头墙贴
+
+  hb_product_011:
+    canonical_name: 海马爸比落地支架
+    doc_path: 10_products/ecommerce/monitor_accessories.md
+    aliases:
+      - 落地支架
+      - 摄像头支架
+      - 床头支架
+      - 落地架
+
+  hb_product_012:
+    canonical_name: 海马爸比天使床头支架
+    doc_path: 10_products/ecommerce/monitor_accessories.md
+    aliases:
+      - 天使支架
+      - 天使床头支架
+      - 软管支架
+      - 床头夹式支架
+
+  hb_product_013:
+    canonical_name: 海马爸比智能成长管理套装
+    doc_path: 10_products/ecommerce/growth_management.md
+    aliases:
+      - 身高体重秤
+      - 智能体重秤
+      - 成长管理套装
+      - 身高仪
+
+  hb_product_014:
+    canonical_name: 海马爸比腰凳PRO
+    doc_path: 10_products/ecommerce/hip_seat.md
+    aliases:
+      - 腰凳PRO
+      - 减压腰凳
+      - 小空调减压腰凳
+      - 抱娃神器

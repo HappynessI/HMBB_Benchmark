@@ -1,0 +1,165 @@
+version: 2
+last_updated: 2026-07-06
+knowledge_base: haimababi-customer-service
+layout: product_facts_intents_global_rules
+
+retrieval_policy:
+  default_entry: README.md
+  alias_table: aliases.yaml
+  rules: retrieval_rules.md
+  active_layers:
+    - 00_global
+    - 10_products
+    - 20_intents
+  archive_priority: reference_only
+  priority_order:
+    - aliases.yaml
+    - 10_products/**
+    - 20_intents/**
+    - 00_global/**
+    - _archive/**
+
+active_documents:
+  - doc_id: kb_readme
+    path: README.md
+    layer: entry
+    doc_type: index
+    priority: highest
+  - doc_id: kb_manifest
+    path: kb_manifest.yaml
+    layer: entry
+    doc_type: manifest
+    priority: highest
+  - doc_id: kb_aliases
+    path: aliases.yaml
+    layer: entry
+    doc_type: alias_table
+    priority: highest
+  - doc_id: kb_retrieval_rules
+    path: retrieval_rules.md
+    layer: entry
+    doc_type: retrieval_policy
+    priority: highest
+
+  - doc_id: kb_brand_and_scope
+    path: 00_global/brand_and_scope.md
+    layer: global_rules
+    doc_type: brand_scope
+    priority: high
+  - doc_id: kb_customer_service_boundaries
+    path: 00_global/customer_service_boundaries.md
+    layer: global_rules
+    doc_type: service_boundary
+    priority: high
+  - doc_id: kb_answer_style_and_escalation
+    path: 00_global/answer_style_and_escalation.md
+    layer: global_rules
+    doc_type: answer_policy
+    priority: high
+
+  - doc_id: kb_monitor_overview
+    path: 10_products/monitor/monitor_overview.md
+    layer: product_facts
+    doc_type: monitor_overview
+    priority: high
+  - doc_id: kb_monitor_specs_matrix
+    path: 10_products/monitor/monitor_specs_matrix.md
+    layer: product_facts
+    doc_type: product_comparison
+    priority: high
+  - doc_id: kb_monitor_feature_matrix
+    path: 10_products/monitor/monitor_feature_matrix.yaml
+    layer: product_facts
+    doc_type: feature_matrix
+    priority: high
+  - doc_id: kb_monitor_compatibility_matrix
+    path: 10_products/monitor/monitor_compatibility_matrix.yaml
+    layer: product_facts
+    doc_type: compatibility_matrix
+    priority: high
+  - doc_id: kb_monitor_2_refresh
+    path: 10_products/monitor/models/hb_monitor_2_refresh.md
+    layer: product_facts
+    doc_type: product_detail
+    product_id: hb_monitor_2_refresh
+    priority: high
+  - doc_id: kb_monitor_2_plus
+    path: 10_products/monitor/models/hb_monitor_2_plus.md
+    layer: product_facts
+    doc_type: product_detail
+    product_id: hb_monitor_2_plus
+    priority: high
+  - doc_id: kb_monitor_3
+    path: 10_products/monitor/models/hb_monitor_3.md
+    layer: product_facts
+    doc_type: product_detail
+    product_id: hb_monitor_3
+    priority: high
+  - doc_id: kb_monitor_4
+    path: 10_products/monitor/models/hb_monitor_4.md
+    layer: product_facts
+    doc_type: product_detail
+    product_id: hb_monitor_4
+    priority: high
+
+  - doc_id: kb_ecommerce_catalog
+    path: 10_products/ecommerce/ecommerce_catalog.jsonl
+    layer: product_facts
+    doc_type: product_catalog
+    priority: high
+  - doc_id: kb_ecommerce_printer_and_paper
+    path: 10_products/ecommerce/printer_and_paper.md
+    layer: product_facts
+    doc_type: ecommerce_product_group
+    priority: high
+  - doc_id: kb_ecommerce_monitor_accessories
+    path: 10_products/ecommerce/monitor_accessories.md
+    layer: product_facts
+    doc_type: ecommerce_product_group
+    priority: high
+  - doc_id: kb_ecommerce_growth_management
+    path: 10_products/ecommerce/growth_management.md
+    layer: product_facts
+    doc_type: ecommerce_product_group
+    priority: high
+  - doc_id: kb_ecommerce_hip_seat
+    path: 10_products/ecommerce/hip_seat.md
+    layer: product_facts
+    doc_type: ecommerce_product_group
+    priority: high
+
+  - doc_id: kb_intent_product_selection
+    path: 20_intents/01_product_selection.md
+    layer: customer_intents
+    doc_type: intent_playbook
+    intent: product_selection
+    priority: high
+  - doc_id: kb_intent_connection_pairing
+    path: 20_intents/02_connection_pairing.md
+    layer: customer_intents
+    doc_type: intent_playbook
+    intent: connection_pairing
+    priority: high
+  - doc_id: kb_intent_installation_settings
+    path: 20_intents/03_installation_settings.md
+    layer: customer_intents
+    doc_type: intent_playbook
+    intent: installation_settings
+    priority: high
+  - doc_id: kb_intent_function_usage
+    path: 20_intents/04_function_usage.md
+    layer: customer_intents
+    doc_type: intent_playbook
+    intent: function_usage
+    priority: high
+  - doc_id: kb_intent_service_safety
+    path: 20_intents/05_service_safety.md
+    layer: customer_intents
+    doc_type: intent_playbook
+    intent: service_safety
+    priority: high
+
+archive:
+  path: _archive/
+  usage: reference_only
+  note: 旧布局原文和拆分中间稿，仅用于追溯，不进入优先检索。

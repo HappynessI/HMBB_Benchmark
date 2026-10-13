@@ -22,6 +22,6 @@
 - [grading/contracts.jsonl](grading/contracts.jsonl)：本轮目标、关键条件、允许动作、业务点、条件后续和禁止动作。
 - [provenance.jsonl](provenance.jsonl)：来源类型、数据划分、可见消息数量和截止位置。
 
-十组实验使用的新知识库位于 [knowledge_base/](../knowledge_base/README.md)，[文件清单](../knowledge_base/kb_manifest.yaml)列出全部29份有效文件。作答阶段读取题干和知识库，评分阶段再读取逐题标准。
+十组实验使用的旧知识库位于 [knowledge_base_old/](../knowledge_base_old/README.md)，共25份有效文件；新知识库位于 [knowledge_base/](../knowledge_base/README.md)，共29份有效文件。两版目录中的 `kb_manifest.yaml` 列出对应文件清单。作答阶段读取题干和所选版本的知识库，评分阶段再读取逐题标准。
 
 构建脚本为 [build_support_v3.py](../scripts/build_support_v3.py)，计分入口为 [score_support_v3.py](../scripts/score_support_v3.py)。
