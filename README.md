@@ -102,6 +102,7 @@ B 接新库的产品12题中，两种后端均生成了12份答复，Utopia没�
 | 新知识库（29份文件） | [知识库入口](knowledge_base/README.md) · [文件清单](knowledge_base/kb_manifest.yaml) |
 | 当前评分规则 | [评分说明](benchmark/评分说明.md) · [Rubric](benchmark/rubric.json) |
 | 配置 B | [system prompt](config/system_prompt.txt) · [总 Skill](config/SKILL.md) · [评分 prompt](config/grader_prompt.txt) |
+| 配置 C | [system prompt](config/C/system_prompt.txt) · [总 Skill](config/C/SKILL.md) |
 | 十组详细指标 | [逐题指标](results/metrics.csv) · [分组汇总](results/summary.json) |
 | 实验参数与用量 | [配置](results/configurations.json) · [调用用量](results/usage.json) |
 | 4,361条业务对话数据 | [数据说明](data/processed_dialogues/README.md) |
