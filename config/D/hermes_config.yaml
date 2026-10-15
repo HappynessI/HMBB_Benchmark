@@ -1,0 +1,7 @@
+# 合并到实际使用的 Hermes 配置；Utopia 地址与访问令牌沿用部署配置。
+knowledge:
+  enabled: true
+  provider: utopia
+  prefetch: false
+  top_k: 8
+  evidence_char_budget: 24000

@@ -11,7 +11,8 @@
     "outer_max_iterations": 20,
     "wiki_inner_max_iterations": 20,
     "max_output_tokens": 8192,
-    "thinking": "disabled"
+    "thinking": "disabled",
+    "knowledge_prefetch": true
   },
   "original_old_utopia": {
     "profile": "A",
@@ -25,7 +26,8 @@
     "outer_max_iterations": 20,
     "wiki_inner_max_iterations": 20,
     "max_output_tokens": 8192,
-    "thinking": "disabled"
+    "thinking": "disabled",
+    "knowledge_prefetch": true
   },
   "user_v3_old_wiki": {
     "profile": "B",
@@ -39,7 +41,8 @@
     "outer_max_iterations": 20,
     "wiki_inner_max_iterations": 20,
     "max_output_tokens": 8192,
-    "thinking": "disabled"
+    "thinking": "disabled",
+    "knowledge_prefetch": true
   },
   "user_v3_old_utopia": {
     "profile": "B",
@@ -53,7 +56,8 @@
     "outer_max_iterations": 20,
     "wiki_inner_max_iterations": 20,
     "max_output_tokens": 8192,
-    "thinking": "disabled"
+    "thinking": "disabled",
+    "knowledge_prefetch": true
   },
   "user_v3_new_wiki": {
     "profile": "B",
@@ -67,7 +71,8 @@
     "outer_max_iterations": 20,
     "wiki_inner_max_iterations": 20,
     "max_output_tokens": 8192,
-    "thinking": "disabled"
+    "thinking": "disabled",
+    "knowledge_prefetch": true
   },
   "user_v3_new_utopia": {
     "profile": "B",
@@ -81,7 +86,8 @@
     "outer_max_iterations": 20,
     "wiki_inner_max_iterations": 20,
     "max_output_tokens": 8192,
-    "thinking": "disabled"
+    "thinking": "disabled",
+    "knowledge_prefetch": true
   },
   "senior_old_wiki": {
     "profile": "C",
@@ -95,7 +101,8 @@
     "outer_max_iterations": 20,
     "wiki_inner_max_iterations": 20,
     "max_output_tokens": 8192,
-    "thinking": "disabled"
+    "thinking": "disabled",
+    "knowledge_prefetch": true
   },
   "senior_old_utopia": {
     "profile": "C",
@@ -109,7 +116,8 @@
     "outer_max_iterations": 20,
     "wiki_inner_max_iterations": 20,
     "max_output_tokens": 8192,
-    "thinking": "disabled"
+    "thinking": "disabled",
+    "knowledge_prefetch": true
   },
   "senior_new_wiki": {
     "profile": "C",
@@ -123,7 +131,8 @@
     "outer_max_iterations": 20,
     "wiki_inner_max_iterations": 20,
     "max_output_tokens": 8192,
-    "thinking": "disabled"
+    "thinking": "disabled",
+    "knowledge_prefetch": true
   },
   "senior_new_utopia": {
     "profile": "C",
@@ -137,6 +146,27 @@
     "outer_max_iterations": 20,
     "wiki_inner_max_iterations": 20,
     "max_output_tokens": 8192,
-    "thinking": "disabled"
+    "thinking": "disabled",
+    "knowledge_prefetch": true
+  },
+  "agentic_new_utopia": {
+    "profile": "D",
+    "knowledge": "新",
+    "backend": "Utopia",
+    "source_group": "D_U",
+    "source_run": "20261015_d_agentic_utopia_run1",
+    "model": "doubao-seed-2-1-lite",
+    "thinking": "disabled",
+    "knowledge_prefetch": false,
+    "retrieval_mode": "model_directed",
+    "outer_max_iterations": 20,
+    "max_output_tokens": 8192,
+    "answer_workers": 4,
+    "grading_workers": 4,
+    "system_prompt": "../config/D/system_prompt.txt",
+    "skill": "../config/D/SKILL.md",
+    "hermes_config": "../config/D/hermes_config.yaml",
+    "hermes_revision": "0f0cee72",
+    "utopia_reuses_frozen_kbs": true
   }
 }

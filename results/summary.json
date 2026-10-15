@@ -330,6 +330,50 @@
           "preview_scored": 12
         }
       }
+    },
+    "agentic_new_utopia": {
+      "all60": {
+        "answers": 60,
+        "scored": 60,
+        "mean_score": 93.17,
+        "program_completed": 60,
+        "format_valid": 60,
+        "effective_answer": 60,
+        "degraded": 0,
+        "budget_exhausted": 0,
+        "severe_cap_count": 0,
+        "send_as_is": 40,
+        "score_statuses": {
+          "preview_scored": 60
+        },
+        "mean_wall_seconds": 16.9
+      },
+      "product12": {
+        "answers": 12,
+        "scored": 12,
+        "mean_score": 83.92,
+        "program_completed": 12,
+        "format_valid": 12,
+        "effective_answer": 12,
+        "degraded": 0,
+        "budget_exhausted": 0,
+        "severe_cap_count": 0,
+        "send_as_is": 4,
+        "score_statuses": {
+          "preview_scored": 12
+        }
+      },
+      "retrieval": {
+        "mode": "model_directed",
+        "prefetch": false,
+        "verified_answers": 60,
+        "tool_calls": {
+          "search_chunks": 128,
+          "get_document": 26
+        },
+        "answers_without_retrieval": 0,
+        "mean_tool_calls": 2.57
+      }
     }
   },
   "product_item_ids": [
@@ -346,6 +390,6 @@
     "hb-v3-059",
     "hb-v3-060"
   ],
-  "answer_records": 600,
-  "scored_records": 599
+  "answer_records": 660,
+  "scored_records": 659
 }

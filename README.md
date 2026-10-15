@@ -1,6 +1,6 @@
 # 海马爸比客服助手评测
 
-当前 benchmark 为60题：既有会话30题、CSV会话30题，包含40道开发题和20道校准题。模型为 `doubao-seed-2-1-lite`，十组实验均采用同一套 Rubric v3。
+当前 benchmark 为60题：既有会话30题、CSV会话30题，包含40道开发题和20道校准题。模型为 `doubao-seed-2-1-lite`，十一组实验均采用同一套 Rubric v3。
 
 ## 为什么补充新 benchmark
 
@@ -42,15 +42,15 @@
 
 可见会话中，客户说的是“换了个地方用”，未确认Wi-Fi是否变化；回复中写的是“通常相当于换到了一个新的 Wi-Fi 网络环境”。在等待客户补充信息之前，回复同时列出了 **3 个问题、5 项通用检查**，以及无灯反应、供电排查和售后检测等分支。
 
-评分对象是包含“建议回复、依据、下一步”的完整答案，上面展示的是客户回复部分；重评没有重新生成答案。100分是当时旧规则的演示值，59分是本次使用`doubao-seed-2-1-lite`和Rubric v3得到的模型重评分。[完整答案与评分记录](results/readme_example_v3.json)保留了六个维度、封顶和判分理由。此单题重评不计入下节十组实验。
+评分对象是包含“建议回复、依据、下一步”的完整答案，上面展示的是客户回复部分；重评没有重新生成答案。100分是当时旧规则的演示值，59分是本次使用`doubao-seed-2-1-lite`和Rubric v3得到的模型重评分。[完整答案与评分记录](results/readme_example_v3.json)保留了六个维度、封顶和判分理由。此单题重评不计入下节十一组实验。
 
 当前Rubric分别记录本轮业务点、处理决策、客户负担、自然表达、依据和客服内部支持六个维度。当前题集增加了从真实会话节点截取的问题。
 
 新增真实会话题最初来自17份对话DOCX和聊天汇编中的50段案例。当前60题从既有真实会话中选取30题，再补充30道CSV会话题，覆盖产品咨询、技术处理以及订单、物流、退款、活动等客服核验场景。
 
-## 十组实验结果
+## 十一组实验结果
 
-之前的四组实验与补充的六组实验合并如下。每组60题，共600份作答、599份数值评分。产品12题是60题中的固定子集；之前四组的产品子集分数由已有评分重新汇总，未重新作答。
+原十组实验与新增D组实验合并如下。每组60题，共660份作答、659份数值评分。产品12题是60题中的固定子集；之前四组的产品子集分数由已有评分重新汇总，未重新作答。
 
 | system prompt＋总 Skill | 知识库 | Wiki：全部60题 | Utopia：全部60题 | Wiki：平均用时（秒） | Utopia：平均用时（秒） | Wiki：产品12题 | Utopia：产品12题 |
 |---|---|---:|---:|---:|---:|---:|---:|
@@ -59,8 +59,9 @@
 | B | 新 | [88.48](results/answers/user_v3_new_wiki.md) | [92.03](results/answers/user_v3_new_utopia.md) | 36.76 | 17.26 | [80.00](results/answers/user_v3_new_wiki.md) | [86.33](results/answers/user_v3_new_utopia.md) |
 | C | 旧 | [51.15](results/answers/senior_old_wiki.md) | [59.17](results/answers/senior_old_utopia.md) | 36.80 | 20.73 | [58.00](results/answers/senior_old_wiki.md) | [48.83](results/answers/senior_old_utopia.md) |
 | C | 新 | [83.37](results/answers/senior_new_wiki.md) | [80.78](results/answers/senior_new_utopia.md) | 36.46 | 20.80 | [56.25](results/answers/senior_new_wiki.md) | [47.00](results/answers/senior_new_utopia.md) |
+| D | 新 | — | [93.17](results/answers/agentic_new_utopia.md) | — | 16.90 | — | [83.92](results/answers/agentic_new_utopia.md) |
 
-分数范围为0—100，点击分数可查看该组完整回答。配置 A 的 Wiki 全题均分采用59份数值评分；其他九组采用60份。产品子集每组都有12份数值评分。
+分数范围为0—100，点击分数可查看该组完整回答。配置 A 的 Wiki 全题均分采用59份数值评分；其他十组采用60份。产品子集每组都有12份数值评分。
 
 平均用时按每组全部60题的作答运行耗时计算，包含检索和生成，不包含评分；未形成答复的题也计入平均值。
 
@@ -69,8 +70,9 @@
 - **A**：旧system prompt和旧总Skill。
 - **B**：结合有价值的业务数据更新后的客服支持system prompt和总Skill。
 - **C**：针对产品咨询场景更新后的system prompt和总Skill。
+- **D**：在B组Utopia部署版基础上更新检索指引，由模型自主决定何时检索以及查询内容。
 
-旧、新知识库分别包含25、29份文件。
+旧、新知识库分别包含25、29份文件。A、B、C的Utopia实验先自动检索一次，再由模型追加查询；D关闭自动首次检索，全部知识查询由模型发起。
 
 <details>
 <summary>1. C 组在 Utopia 中的作答与检索记录</summary>
@@ -93,6 +95,17 @@ B 接新库的产品12题中，两种后端均生成了12份答复，Utopia没�
 
 </details>
 
+<details>
+<summary>3. D组自主检索与B组相比如何？</summary>
+
+同用新知识库和Utopia，D、B的全60题均分分别为 **93.17、92.03**，产品12题均分分别为 **83.92、86.33**；平均用时分别为 **16.90、17.26秒**。两组均完成60题，未出现迭代耗尽。
+
+D共调用知识工具154次（128次搜索、26次文档读取），B为206次（184次搜索、22次文档读取，包含自动首次检索）。D的60题都由模型自主选择了检索，逐题请求核验确认没有自动预检索。
+
+D本次同时更新提示配置与检索方式。完整回答和逐题评分可从表格中的分数进入查看。
+
+</details>
+
 ## 旧 test50 运行结果
 
 [旧 test50 逐题作答与运行结果](results/test50/README.md)包含8组各50题，共400条正式运行记录；其中369条运行完成、31条未完成，389条保留了非空最终输出。每组提供逐题阅读版和JSONL，并附运行状态、耗时、token及错误指标。本批次使用 `deepseek-v4-flash`、high，尚未统一业务评分。
@@ -110,11 +123,18 @@ B 接新库的产品12题中，两种后端均生成了12份答复，Utopia没�
 | 配置 B（实验原版） | [system prompt](config/B/experiment/system_prompt.txt) · [总 Skill](config/B/experiment/skill.txt) |
 | 配置 B（Utopia部署版） | [system prompt](config/B/system_prompt.txt) · [总 Skill](config/B/SKILL.md) |
 | 配置 C | [system prompt](config/C/system_prompt.txt) · [总 Skill](config/C/SKILL.md) |
-| 十组详细指标 | [逐题指标](results/metrics.csv) · [分组汇总](results/summary.json) |
+| 配置 D（模型自主检索） | [system prompt](config/D/system_prompt.txt) · [总 Skill](config/D/SKILL.md) · [Hermes配置](config/D/hermes_config.yaml) |
+| 十一组详细指标 | [逐题指标](results/metrics.csv) · [分组汇总](results/summary.json) |
 | 旧 test50：8组400条运行记录 | [逐题作答与说明](results/test50/README.md) · [逐题指标](results/test50/metrics.csv) · [分组汇总](results/test50/summary.json) |
 | 实验参数与用量 | [配置](results/configurations.json) · [调用用量](results/usage.json) |
 | 4,361条业务对话数据 | [数据说明](data/processed_dialogues/README.md) |
 
-十组实验中的B组使用实验原版配置。现行B版面向Utopia部署：人工客服提供会话，Agent通过Hermes已配置的只读Utopia工具检索知识并返回建议，人工客服确认、发送和执行。仓库中的知识库文件用于导入和查看资料来源。
+历史实验中的B组使用实验原版配置。现行B版面向Utopia部署：人工客服提供会话，Agent通过Hermes已配置的只读Utopia工具检索知识并返回建议，人工客服确认、发送和执行。仓库中的知识库文件用于导入和查看资料来源。
 
 部署现行B版时，在Hermes的 `knowledge` 配置中启用 `provider: utopia`，并设置Utopia的MCP地址与只读访问令牌。Agent在问答时通过Utopia检索已导入的知识资料。
+
+部署D版时，使用支持 `knowledge.prefetch` 的 [Hermes版本](https://github.com/HappynessI/hermes-agent/commit/0f0cee72)，合并 [D组Hermes配置](config/D/hermes_config.yaml)，启用 `knowledge` 工具集，并加载D组system prompt和总Skill。`prefetch: false` 让模型结合会话自主决定检索时机和查询内容。
+
+## 待办
+
+- [ ] 多轮交互专项测试：检查连续追问、诉求切换、回复改写及整段会话输入时的检索行为。

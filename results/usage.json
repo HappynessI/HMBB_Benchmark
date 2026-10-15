@@ -318,5 +318,37 @@
         "doubao-seed-2-1-lite"
       ]
     }
+  },
+  "agentic_new_utopia": {
+    "answer": {
+      "attempted_calls": 168,
+      "completed_calls": 168,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 168,
+      "input_tokens": 1846810,
+      "output_tokens": 43023,
+      "cached_input_tokens": 656752,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    },
+    "judge": {
+      "attempted_calls": 79,
+      "completed_calls": 79,
+      "calls_without_completion_metadata": 0,
+      "http_errors": 0,
+      "transport_error_events": 0,
+      "adapted_calls": 0,
+      "usage_reported_calls": 79,
+      "input_tokens": 1338489,
+      "output_tokens": 115158,
+      "cached_input_tokens": 120430,
+      "returned_models": [
+        "doubao-seed-2-1-lite"
+      ]
+    }
   }
 }

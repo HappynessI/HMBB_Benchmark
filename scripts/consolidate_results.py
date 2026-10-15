@@ -46,6 +46,20 @@ def summarize(entries):
 
 
 def consolidate(previous, supplementary, output, readme):
+    # 重建早期十组时，保留后来追加的实验及其逐题文件。
+    known = {group[0] for group in GROUPS}
+    retained = {}
+    retained_metrics = []
+    if (output / 'summary.json').exists():
+        retained = {key: value for key, value in read(output / 'summary.json')['groups'].items()
+                    if key not in known}
+    retained_configs = {key: value for key, value in read(output / 'configurations.json').items()
+                        if key in retained} if retained else {}
+    retained_usage = {key: value for key, value in read(output / 'usage.json').items()
+                      if key in retained} if retained else {}
+    if retained:
+        with (output / 'metrics.csv').open(newline='') as handle:
+            retained_metrics = [row for row in csv.DictReader(handle) if row['group'] in retained]
     sources = {'previous': previous, 'supplementary': supplementary}
     manifests = {key: read(folder / 'experiment_manifest.json') for key, folder in sources.items()}
     assert {m['model'] for m in manifests.values()} == {'doubao-seed-2-1-lite'}
@@ -101,6 +115,14 @@ def consolidate(previous, supplementary, output, readme):
         (answers / (ident + '.md')).write_text('\n'.join(full).rstrip() + '\n', encoding='utf-8')
     assert len(metrics) == 600
     assert sum(m['score'] is not None for m in metrics) == 599
+    metrics.extend(retained_metrics)
+    summaries.update(retained)
+    configurations.update(retained_configs)
+    usage.update(retained_usage)
+    for config in configurations.values():
+        config.setdefault('knowledge_prefetch', True)
+    total_answers = sum(s['all60']['answers'] for s in summaries.values())
+    total_scores = sum(s['all60']['scored'] for s in summaries.values())
     fields = list(dict.fromkeys(key for metric in metrics for key in metric))
     with (output / 'metrics.csv').open('w', encoding='utf-8', newline='') as handle:
         writer = csv.DictWriter(handle, fieldnames=fields, lineterminator='\n')
@@ -108,7 +130,7 @@ def consolidate(previous, supplementary, output, readme):
         writer.writerows({key: json.dumps(value, ensure_ascii=False) if isinstance(value, (dict, list))
                          else value for key, value in metric.items()} for metric in metrics)
     write(output / 'summary.json', {'groups': summaries, 'product_item_ids': sorted(primary),
-                                   'answer_records': 600, 'scored_records': 599})
+                                   'answer_records': total_answers, 'scored_records': total_scores})
     write(output / 'configurations.json', configurations)
     write(output / 'usage.json', usage)
 
@@ -128,6 +150,12 @@ def consolidate(previous, supplementary, output, readme):
         cells[2:2] = [f'{summaries[ident]["all60"]["mean_wall_seconds"]:.2f}'
                       for ident in (left[0], right[0])]
         report.append('| ' + left[1] + ' | ' + left[2] + ' | ' + ' | '.join(cells) + ' |')
+    if 'agentic_new_utopia' in summaries:
+        current = summaries['agentic_new_utopia']
+        target = 'results/answers/agentic_new_utopia.md'
+        report.append(f'| D | 新 | — | [{current["all60"]["mean_score"]:.2f}]({target}) | — | '
+                      f'{current["all60"]["mean_wall_seconds"]:.2f} | — | '
+                      f'[{current["product12"]["mean_score"]:.2f}]({target}) |')
     report += ['', '分数范围为0—100，点击分数可查看该组完整回答。配置 A 的 Wiki 全题均分采用59份数值评分；'
                '其他九组采用60份。产品子集每组都有12份数值评分。', '',
                '平均用时按每组全部60题的作答运行耗时计算，包含检索和生成，不包含评分；未形成答复的题也计入平均值。', '',
@@ -149,19 +177,29 @@ def consolidate(previous, supplementary, output, readme):
                '| 4,361条业务对话数据 | [数据说明](data/processed_dialogues/README.md) |', '']
     # 只更新结果表和配置说明，保留创建背景与人工补充的展开解读。
     existing = readme.read_text(encoding='utf-8')
-    heading = '## 十组实验结果\n'
+    heading = '## 十一组实验结果\n' if '## 十一组实验结果\n' in existing else '## 十组实验结果\n'
     start = existing.index(heading)
     end = existing.index('\n## ', start + len(heading))
     section = existing[start:end]
     details_start = section.find('\n<details>\n')
     explanation = section[details_start:] if details_start >= 0 else ''
     generated = '\n'.join(report)
-    generated_start = generated.index(heading)
+    if 'agentic_new_utopia' in summaries:
+        generated = generated.replace('十组实验', '十一组实验').replace(
+            '之前的四组实验与补充的六组实验合并如下。每组60题，共600份作答、599份数值评分。',
+            f'原十组实验与新增D组实验合并如下。每组60题，共{total_answers}份作答、{total_scores}份数值评分。')
+        generated = generated.replace('其他九组采用60份。', '其他十组采用60份。')
+        generated = generated.replace('\n\n旧、新知识库分别包含25、29份文件。',
+            '\n- **D**：在B组Utopia部署版基础上更新检索指引，由模型自主决定何时检索以及查询内容。\n\n'
+            '旧、新知识库分别包含25、29份文件。A、B、C的Utopia实验先自动检索一次，再由模型追加查询；'
+            'D关闭自动首次检索，全部知识查询由模型发起。')
+    generated_heading = '## 十一组实验结果\n' if retained else '## 十组实验结果\n'
+    generated_start = generated.index(generated_heading)
     generated_end = generated.index('\n## 文件入口', generated_start)
     readme.write_text(existing[:start] + generated[generated_start:generated_end] + explanation + existing[end:],
                       encoding='utf-8')
     print(json.dumps({'groups': len(summaries), 'answers': len(metrics),
-                      'scored': 599, 'product_scores': len(primary) * len(summaries)}, ensure_ascii=False))
+                      'scored': total_scores, 'product_scores': len(primary) * len(summaries)}, ensure_ascii=False))
 
 
 if __name__ == '__main__':
