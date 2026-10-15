@@ -93,6 +93,10 @@ B 接新库的产品12题中，两种后端均生成了12份答复，Utopia没�
 
 </details>
 
+## 旧 test50 运行结果
+
+[旧 test50 逐题作答与运行结果](results/test50/README.md)包含8组各50题，共400条正式运行记录；其中369条运行完成、31条未完成，389条保留了非空最终输出。每组提供逐题阅读版和JSONL，并附运行状态、耗时、token及错误指标。本批次使用 `deepseek-v4-flash`、high，尚未统一业务评分。
+
 ## 文件入口
 
 | 内容 | 位置 |
@@ -107,6 +111,7 @@ B 接新库的产品12题中，两种后端均生成了12份答复，Utopia没�
 | 配置 B（Utopia部署版） | [system prompt](config/B/system_prompt.txt) · [总 Skill](config/B/SKILL.md) |
 | 配置 C | [system prompt](config/C/system_prompt.txt) · [总 Skill](config/C/SKILL.md) |
 | 十组详细指标 | [逐题指标](results/metrics.csv) · [分组汇总](results/summary.json) |
+| 旧 test50：8组400条运行记录 | [逐题作答与说明](results/test50/README.md) · [逐题指标](results/test50/metrics.csv) · [分组汇总](results/test50/summary.json) |
 | 实验参数与用量 | [配置](results/configurations.json) · [调用用量](results/usage.json) |
 | 4,361条业务对话数据 | [数据说明](data/processed_dialogues/README.md) |
 

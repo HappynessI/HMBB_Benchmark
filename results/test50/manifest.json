@@ -1,0 +1,133 @@
+{
+  "run_id": "20260929_test50",
+  "dataset": "旧 test50",
+  "question_ids": [
+    "hbv2-selection-031",
+    "hbv2-selection-032",
+    "hbv2-selection-033",
+    "hbv2-selection-034",
+    "hbv2-selection-035",
+    "hbv2-selection-036",
+    "hbv2-selection-037",
+    "hbv2-selection-038",
+    "hbv2-selection-039",
+    "hbv2-selection-040",
+    "hbv2-connection-031",
+    "hbv2-connection-032",
+    "hbv2-connection-033",
+    "hbv2-connection-034",
+    "hbv2-connection-035",
+    "hbv2-connection-036",
+    "hbv2-connection-037",
+    "hbv2-connection-038",
+    "hbv2-connection-039",
+    "hbv2-connection-040",
+    "hbv2-installation-031",
+    "hbv2-installation-032",
+    "hbv2-installation-033",
+    "hbv2-installation-034",
+    "hbv2-installation-035",
+    "hbv2-installation-036",
+    "hbv2-installation-037",
+    "hbv2-installation-038",
+    "hbv2-installation-039",
+    "hbv2-installation-040",
+    "hbv2-function-031",
+    "hbv2-function-032",
+    "hbv2-function-033",
+    "hbv2-function-034",
+    "hbv2-function-035",
+    "hbv2-function-036",
+    "hbv2-function-037",
+    "hbv2-function-038",
+    "hbv2-function-039",
+    "hbv2-function-040",
+    "hbv2-service-031",
+    "hbv2-service-032",
+    "hbv2-service-033",
+    "hbv2-service-034",
+    "hbv2-service-035",
+    "hbv2-service-036",
+    "hbv2-service-037",
+    "hbv2-service-038",
+    "hbv2-service-039",
+    "hbv2-service-040"
+  ],
+  "model": "deepseek-v4-flash",
+  "reasoning_effort": "high",
+  "versions": {
+    "claude_code": "2.1.266",
+    "dsh_executed": "0.1.7-rc.2",
+    "hermes": "0.19.1 source snapshot; no .git present",
+    "hermes_anthropic_sdk": "0.84.0 isolated runtime"
+  },
+  "limits": {
+    "wall_seconds_per_question": 600,
+    "max_output_tokens_per_call": 32000,
+    "hermes_max_iterations": 40,
+    "claude_turn_limit": "native; wall timeout enforced",
+    "dsh_turn_limit": "native; wall timeout 600 enforced",
+    "hermes_utopia_max_iterations": 20,
+    "hermes_utopia_workers": 1
+  },
+  "groups": [
+    {
+      "group": "claude_code_baseline",
+      "harness": "claude-code",
+      "condition": "no_business_skill_or_kb",
+      "selected_attempt": "formal1"
+    },
+    {
+      "group": "claude_code_original",
+      "harness": "claude-code",
+      "condition": "original_skill_and_kb",
+      "selected_attempt": "formal1"
+    },
+    {
+      "group": "dsh_baseline",
+      "harness": "dsh",
+      "condition": "no_business_skill_or_kb",
+      "selected_attempt": "formal1"
+    },
+    {
+      "group": "dsh_original",
+      "harness": "dsh",
+      "condition": "original_skill_and_kb",
+      "selected_attempt": "formal1"
+    },
+    {
+      "group": "hermes_baseline",
+      "harness": "hermes",
+      "condition": "no_business_skill_or_kb",
+      "selected_attempt": "formal2"
+    },
+    {
+      "group": "hermes_original",
+      "harness": "hermes",
+      "condition": "original_skill_and_kb",
+      "selected_attempt": "formal2"
+    },
+    {
+      "group": "hermes_wiki",
+      "harness": "hermes",
+      "condition": "llm_wiki",
+      "selected_attempt": "formal1"
+    },
+    {
+      "group": "hermes_utopia",
+      "harness": "hermes",
+      "condition": "utopia",
+      "selected_attempt": "formal2"
+    }
+  ],
+  "grading_status": "not_graded",
+  "business_confirmed": false,
+  "answer_policy": "按正式批次导出最终输出；只替换敏感文本，不润色、不补答；空输出保留为空字符串。",
+  "selection_policy": "以 execution_metrics.csv 中的400条正式记录为准；排除标记无效的批次、冒烟测试和预检。",
+  "redacted_answers": 11,
+  "redaction_counts": {
+    "local_path": 7,
+    "number": 2,
+    "internal_id": 25
+  }
+}
